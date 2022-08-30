@@ -62,6 +62,24 @@ body{
 .hero-bg-1 h2, .hero-bg-2 h2{
     font-family: 'Merriweather', serif ;
 }
+.hero-text-1{
+    margin-top: 20%;
+}
+.hero-text-2{
+    margin-top: 60%;
+}
+.our-collection{
+    border-radius: 0 0 35px 0;
+}
+.our-collection:hover{
+    background-color: #1C3AA4;
+}
+.our-collection2{
+    border-radius: 0 0 0 35px;
+}
+.hero-img-section{
+    display: none;
+}
 
 
 
@@ -137,9 +155,47 @@ body{
     .search-navbar-box-fixed{
         width: 63%;
     }
+
+
+    /* HERO SECTION */
+    .hero-text-1, .hero-text-2{
+        margin-left: 90px;
+    }
+    .hero-year{
+        font-size: 25px !important;
+    }
+    .hero-text-1 h2, .hero-text-2 h2{
+        width: 50%;
+        font-size: 40px;
+    }
+    .hero-text-2{
+        margin-top: 30%;
+    }
 }
 
 @media screen and (min-width:769px){
+    .hero-text-2, .hero-text-1{
+        margin-top: 10%;
+    }
+    .hero-text-1, .hero-text-2{
+        margin-left: 20%;
+    }
+    .hero-text-1 h2, .hero-text-2 h2{
+        width: 70%;
+        font-size: 60px;
+    }
+    .hero-img-section{
+        display: unset;
+    }
+    .hero-img-conteiner{
+        margin-top: 25%;
+    }
+    .hero-img-2{
+        margin-top: -30px;
+    }
+    .hero-img-3{
+        margin-top: 30px;
+    }
     
 }
 
