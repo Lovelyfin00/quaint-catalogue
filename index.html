@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- External links -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://kit.fontawesome.com/d972efdfc6.js" crossorigin="anonymous"></script>
+  <!-- Custom css -->
+  <link rel="stylesheet" href="css/style.css">
+  <title>Auait catalogue</title>
+</head>
+
+<body>
+  <main>
+    <header class="mobile-header fixed-top">
+      <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand w-25" href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
+          <div class="d-flex align-items-center">
+            <a class="nav-link ms-2 me-2 position-relative fa-xl fa-solid fa-cart-shopping" aria-current="page"
+              href="cart.html">
+              <span class="position-absolute translate-middle badge rounded main-bg-blue" id="cart-items"
+                style="font-size: 11px; left: 100%; bottom: -4px;">
+                0
+              </span>
+            </a>
+            <button class="btn border-0 ms-3 me-2 search-navbar-mobile" aria-current="page" href="#"><i
+                class="fa-solid fa-magnifying-glass"></i>
+            </button>
+              <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          </div>
+          <div class="offcanvas w-75 offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div class="account-link text-center mb-4">
+                <a href="#" class="my-account text-decoration-none py-2 px-3 main-bg-blue text-white">My account</a>
+              </div>
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About us</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Shops
+                  </a>
+                  
+                  <ul class="dropdown-menu ms-2 border-0">
+                    <li><a class="dropdown-item nav-link" href="#">Clothes</a></li>
+                    <li><a class="dropdown-item nav-link" href="#">Electronics</a></li>
+                    <li><a class="dropdown-item nav-link" href="#">Furniture</a></li>
+                    <li><a class="dropdown-item nav-link" href="#">Shoes</a></li>
+                    <li><a class="dropdown-item nav-link" href="#">Others</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <form class="position-absolute top-25 left-0 w-100 d-none search-navbar-box-mobile" style="z-index: 2;" >
+        <div class="d-flex align-items-center">
+          <input type="text" class="form-control rounded-0 border-0 pt-2 pb-2 bg-dark text-white" placeholder="Enter your search here">
+          <button type="button" class="fa-solid fa-xmark position-absolute border-0 bg-dark text-white close-search-btn" style="left: 90% !important;"></button>
+        </div>
+      </form>
+    </header>
+
+    <div class="navbar-fixed-2 d-none fixed-top bg-white">
+      <div class="container">
+        <div class="fixed-nav-laptop">
+          <div class="row">
+            <div class="col-lg-8 col-md-8">
+              <div class="d-flex justify-content-between align-items-center pt-2 pb-2">
+                <div style="width: 20%;">
+                  <img src="img/logo3.svg" alt="logo" class="img-fluid">
+                </div>
+                <nav class="navbar">
+                  <div class="container-fluid">
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                      <div class="offcanvas-header">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body">
+                        <div class="account-link text-center mb-4">
+                          <a href="#" class="my-account text-decoration-none py-2 px-5 main-bg-green text-white">My account</a>
+                        </div>
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                          <li class="nav-item">
+                            <a class="nav-link active milk-color fw-bold" aria-current="page" href="#">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link milk-color" href="#">About us</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle milk-color" href="#" role="button" data-bs-toggle="dropdown"
+                              aria-expanded="false">
+                              Shops
+                            </a>
+                            
+                            <ul class="dropdown-menu ms-2 border-0 bg-dark">
+                              <li><a class="dropdown-item nav-link milk-color" href="#">Clothes</a></li>
+                              <li><a class="dropdown-item nav-link milk-color" href="#">Electronics</a></li>
+                              <li><a class="dropdown-item nav-link milk-color" href="#">Furniture</a></li>
+                              <li><a class="dropdown-item nav-link milk-color" href="#">Shoes</a></li>
+                              <li><a class="dropdown-item nav-link milk-color" href="#">Others</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link milk-color" href="#">Contact</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 d-flex align-items-center justify-content-between">
+                <a class="nav-link ms-2 me-2 position-relative fa-2xl fa-solid fa-cart-shopping fa-shopping-fixed text-dark" aria-current="page"
+                  href="cart.html">
+                  <span class="position-absolute translate-middle badge rounded main-bg-blue text-white" id="cart-items"
+                      style="font-size: 11px; left: 100%; bottom: -4px;">
+                      0
+                  </span>
+                </a>
+                <button class="btn border-0 ms-3 me-2 search-navbar-fixed" aria-current="page" href="#">
+                  <i class="fa-solid fa-xl fa-magnifying-glass text-dark"></i>
+                </button>
+                <a href="#" class="text-decoration-none text-dark w-bold my-account-fixed py-2 px-2">My account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="position-absolute top-25 left-0  d-none search-navbar-box-fixed" style="z-index: 2;" >
+        <div class="d-flex align-items-center">
+          <input type="text" class="form-control rounded-0 border-0 pt-3 pb-3 bg-dark text-white" placeholder="Enter your search here">
+          <button type="button" class="fa-solid fa-xmark position-absolute border-0 bg-dark text-white close-search-btn-fixed" style="left: 90% !important;"></button>
+        </div>
+      </form>
+    </div>
+
+    <section id="hero-section">
+      <div class="tab-laptop-navbar d-none fixed-top mt-5">
+        <div class="container">
+          <div class="d-flex tab-nav-js">
+            <div class="top-bar-left d-flex justify-content-between pt-4 pb-4 bg-white">
+              <div class="w-25">
+                <img src="img/logo3.svg" alt="logo" class="img-fluid">
+              </div>
+              <nav class="navbar">
+                <div class="container-fluid">
+                  <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar2" aria-controls="offcanvasDarkNavbar2">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar2" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <div class="account-link text-center mb-4">
+                        <a href="#" class="my-account text-decoration-none py-2 px-5 main-bg-green text-white">My account</a>
+                      </div>
+                      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                          <a class="nav-link active milk-color fw-bold" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link milk-color" href="#">About us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle milk-color" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Shops
+                          </a>
+                          
+                          <ul class="dropdown-menu ms-2 border-0 bg-dark">
+                            <li><a class="dropdown-item nav-link milk-color" href="#">Clothes</a></li>
+                            <li><a class="dropdown-item nav-link milk-color" href="#">Electronics</a></li>
+                            <li><a class="dropdown-item nav-link milk-color" href="#">Furniture</a></li>
+                            <li><a class="dropdown-item nav-link milk-color" href="#">Shoes</a></li>
+                            <li><a class="dropdown-item nav-link milk-color" href="#">Others</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link milk-color" href="#">Contact</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <div class="top-bar-middle main-bg-blue">
+  
+            </div>
+            <div class="top-bar-right d-flex align-items-center justify-content-between ps-2 pe-4">
+                <a class="nav-link ms-2 me-2 position-relative fa-2xl fa-solid fa-cart-shopping milk-color" aria-current="page"
+                  href="cart.html">
+                  <span class="position-absolute translate-middle badge rounded main-bg-green text-dark" id="cart-items"
+                      style="font-size: 11px; left: 100%; bottom: -4px;">
+                      0
+                  </span>
+                </a>
+                <button class="btn border-0 ms-3 me-2 search-navbar-scroll" aria-current="page" href="#">
+                  <i class="fa-solid fa-xl fa-magnifying-glass milk-color"></i>
+                </button>
+                <a href="#" class="text-decoration-none milk-color fw-bold my-account py-2 px-2">My account</a>
+            </div>
+          </div>
+          <form class="position-absolute top-25 left-0 d-none search-navbar-box-scroll" style="z-index: 2;" >
+            <div class="d-flex align-items-center">
+              <input type="text" class="form-control rounded-0 border-0 pt-3 pb-3 bg-dark text-white" placeholder="Enter your search here">
+              <button type="button" class="fa-solid fa-xmark position-absolute border-0 bg-dark text-white close-search-btn-scroll" style="left: 90% !important;"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="hero-bg-1 pt-5">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-6 mt-5">
+                  <div class="container">
+                    <div data-aos="fade-left" data-aos-delay="50" data-aos-easing="ease-in" data-aos-duration="1000">
+                      <p class="mb-0">2023</p>
+                      <h2>Spring Collection</h2>
+                      <p>SPRING SALE | UP TO 30% OFF</p>
+                      <button class="btn">Our collection</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-6">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="hero-bg-2 pt-5">
+              
+                  
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a ipsum? Deleniti dolor fugit corrupti delectus, sequi mollitia, in aliquam facere hic, illum ducimus. Officiis necessitatibus facere maxime quidem deserunt!</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a ipsum? Deleniti dolor fugit corrupti delectus, sequi mollitia, in aliquam facere hic, illum ducimus. Officiis necessitatibus facere maxime quidem deserunt!</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a ipsum? Deleniti dolor fugit corrupti delectus, sequi mollitia, in aliquam facere hic, illum ducimus. Officiis necessitatibus facere maxime quidem deserunt!</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a ipsum? Deleniti dolor fugit corrupti delectus, sequi mollitia, in aliquam facere hic, illum ducimus. Officiis necessitatibus facere maxime quidem deserunt!</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a ipsum? Deleniti dolor fugit corrupti delectus, sequi mollitia, in aliquam facere hic, illum ducimus. Officiis necessitatibus facere maxime quidem deserunt!</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a ipsum? Deleniti dolor fugit corrupti delectus, sequi mollitia, in aliquam facere hic, illum ducimus. Officiis necessitatibus facere maxime quidem deserunt!</h2>
+  </main>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <!-- AOS Aimation -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+      AOS.init();
+  </script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
