@@ -23,6 +23,12 @@ body{
 .milk-color{
     color: #e3e3e3 !important;
 }
+.milk-color-bg{
+    background-color: #e3e3e3;
+}
+.container{
+    width: 85% !important;
+}
 
 
 /* Header section */
@@ -59,7 +65,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
-.hero-bg-1 h2, .hero-bg-2 h2{
+.hero-bg-1 h1, .hero-bg-2 h1{
     font-family: 'Merriweather', serif ;
 }
 .hero-text-1{
@@ -82,6 +88,47 @@ body{
 }
 
 
+
+
+
+/* HOT SELLING SECTION */
+#hot-selling-section{
+    padding: 10% 0;
+}
+
+.add-to-cart, .product-details{
+    width: 60px;
+    height: 50px;
+}
+.product-img img{
+    height: 16rem;
+    width: 100%;
+}
+
+.product-img:hover img{
+    transform: scale(1.1);
+    transition: 0.5s all ease-in-out;
+    opacity: 0.5;
+}
+
+.product-img:hover .product-links {
+    display: block !important;
+    display: flex !important;
+    bottom: 40%;
+    left: 20%;
+}
+   
+.product-img .product-links {
+    display: none !important;
+}
+
+
+
+
+.swiper-button-next, .swiper-button-prev{
+    top: 30%;
+    color: black;
+}
 
 
 @media screen and (min-width:426px){
@@ -158,13 +205,14 @@ body{
 
 
     /* HERO SECTION */
+    
     .hero-text-1, .hero-text-2{
         margin-left: 90px;
     }
     .hero-year{
         font-size: 25px !important;
     }
-    .hero-text-1 h2, .hero-text-2 h2{
+    .hero-text-1 h1, .hero-text-2 h1{
         width: 50%;
         font-size: 40px;
     }
@@ -178,9 +226,9 @@ body{
         margin-top: 10%;
     }
     .hero-text-1, .hero-text-2{
-        margin-left: 20%;
+        margin-left: 17%;
     }
-    .hero-text-1 h2, .hero-text-2 h2{
+    .hero-text-1 h1, .hero-text-2 h1{
         width: 70%;
         font-size: 60px;
     }
@@ -188,7 +236,8 @@ body{
         display: unset;
     }
     .hero-img-conteiner{
-        margin-top: 25%;
+        position: absolute;
+        bottom: 10%;
     }
     .hero-img-2{
         margin-top: -30px;

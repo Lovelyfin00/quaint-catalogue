@@ -1,14 +1,71 @@
 
+let hotSellingSection = document.querySelector("#hot-deals-row")
+
+let hotDealsArray = [];
+let hotProducts = {}
+
+const api_url = './database/store.json';
+
+async function getHotProductsData(){
+  const response =  await fetch (api_url);
+  hotDealsArray = await response.json();
+
+  hotDealsArray = hotDealsArray.slice(159 ,185)
+    for (const product of hotDealsArray){
+      // console.log(product)
+      const catagoryName = product.category.name;
+      if (catagoryName === "Clothes" || catagoryName === "Shoes"){
+        // hotProducts = product.id 
+        hotProducts = product 
+        // console.log(hotProducts)
+        hotDeals(hotProducts)
+      }
+    } 
+}
+getHotProductsData()
 
 
+function hotDeals (products) {
+  // console.log(products)
+  let id = products.id
+  let images = products.images
+  let price = products.price
+  let title = products.title
+  // console.log(id)
+  // console.log(images)
+  // console.log(price)
+  // console.log(title)
+  let hotDealsStrings=""
+  hotDealsStrings += `
+    <div class="swiper-slide">
+      <div class="card border-0 milk-color-bg">
+          <div class="product-img position-relative">
+            <img src="${images}" alt="product image" class="img-fluid">
+            <div class="product-links d-flex position-absolute">
+              <div class="add-to-cart bg-dark d-flex align-items-center justify-content-center me-2">
+                <button id="product-link-${id}" class="border-0 bg-dark "><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
+              </div>
+              <div class="product-details main-bg-blue d-flex align-items-center justify-content-center me-2">
+                <a href="#" id="product-link-${id} "><i class="fa-solid fa-link fa-2xl text-white"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="product-descrip mb-4">
+            <p class="product-name pt-3 mb-1 fs-5">${title}</p>
+            <p class="product-price fw-bold">$${price}</p>
+          </div>
+        </div>
+    </div>
+  `
+hotSellingSection.innerHTML += hotDealsStrings
+}
 
 
-
-
-fetch('https://api.escuelajs.co/api/v1/categories')
-.then(res=>res.json())
-.then(json=>console.log(json))
-
+function randomProducts (){
+  let randomProd = Math.round(Math.random()*4 + 1);
+  return randomProd
+}
+console.log(randomProducts())
 
 
 // fetch('https://dummyjson.com/products/categories')
@@ -141,12 +198,6 @@ window.addEventListener("scroll", ()=> {
   lastScrollOnY = window.scrollY;
 })
 
-
-
-
-
-
-
 // Swipper Js Javascript style
 
 var swiper = new Swiper(".mySwiper", {
@@ -164,3 +215,58 @@ var swiper = new Swiper(".mySwiper", {
       shadowScale: 0.94,
     },
   });
+
+  // Hot Deals swipper
+
+
+  var swiperHot = new Swiper(".hotSwiper", {
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+    breakpoints: {
+      250: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      426: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
+
+// Marquee effect
+
+(function () {
+    const script = document.createElement("script");
+    const s0 = document.getElementsByTagName("script")[0];
+    script.async = true;
+    script.src = "https://api.adnan-tech.com/public/js/at.js";
+    script.setAttribute("crossorigin", "*");
+    s0.parentNode.insertBefore(script, s0);
+
+    script.onload = function () {
+        at.loadMarquee("#marquee", `<h5 class="text-center pb-5 main-blue-color">Hot products selling fast</h5>`, {
+            duration: 5, // seconds
+            direction: "rtl"
+        });
+    };
+})();
+
+
+
