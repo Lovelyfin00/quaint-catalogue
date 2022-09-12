@@ -282,11 +282,11 @@ function featuredFurniture (furnitureData){
 }
 
 
-
-
-
-
-
+// PRELOADER
+let preLoader = document.querySelector("#preloader");
+window.addEventListener("load", () => {
+  preLoader.style.display = "none";
+})
 
 
 

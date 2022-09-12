@@ -7,6 +7,17 @@ font-family: 'Overlock', cursive; */ */
 body{
     font-family: 'Playfair Display', serif !important;
 }
+.fixed-top{
+    z-index: 10 !important;
+}
+#preloader{
+    background: #000 url(../img/preloader-gif.gif) no-repeat center center;
+    background-size: 15%;
+    height: 100vh !important;
+    width: 100% !important;
+    position: fixed !important;
+    z-index: 100 !important;
+}
 
 .main-blue-color{
     color: #1C3AA4;
@@ -417,6 +428,10 @@ body{
     /* DELIVERY SECTION */
     .shipping-card{
         width: 100%;
+    }
+    /* FOOTER SECTION */
+    .social-links{
+        justify-content: start !important;
     }
 }
 
