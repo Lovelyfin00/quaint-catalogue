@@ -20,14 +20,20 @@
 
 <body>
   <main>
-    <header class="mobile-header fixed-top">
+    <header class="mobile-header d-none fixed-top">
       <nav class="navbar bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand w-25" href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
+          <div class="d-flex justify-content-between left-navbar">
+            <a class="navbar-brand" href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
+          <button class="navbar-toggler border-0 navbar-toggler-tablet" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+          </button>
+          </div>
           <div class="d-flex align-items-center">
             <a class="nav-link ms-2 me-2 position-relative fa-xl fa-solid fa-cart-shopping" aria-current="page"
               href="cart.html">
-              <span class="position-absolute translate-middle badge rounded main-bg-blue" id="cart-items"
+              <span class="position-absolute translate-middle badge rounded main-bg-blue cart-items-scroll" 
                 style="font-size: 11px; left: 100%; bottom: -4px;">
                 0
               </span>
@@ -35,10 +41,11 @@
             <button class="btn border-0 ms-3 me-2 search-navbar-mobile" aria-current="page" href="#"><i
                 class="fa-solid fa-magnifying-glass"></i>
             </button>
-              <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+            <a href="#" class="text-decoration-none text-dark w-bold my-account-fixed py-2 px-2">My account</a>
+            <button class="navbar-toggler navbar-toggler-mobile border-0" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
-              </button>
+            </button>
           </div>
           <div class="offcanvas w-75 offcanvas-end" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
@@ -87,91 +94,15 @@
       </form>
     </header>
 
-    <div class="navbar-fixed-2 d-none fixed-top bg-white">
-      <div class="container">
-        <div class="fixed-nav-laptop">
-          <div class="row">
-            <div class="col-lg-8 col-md-8">
-              <div class="d-flex justify-content-between align-items-center pt-2 pb-2">
-                <div style="width: 20%;">
-                  <a href="#"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
-                </div>
-                <nav class="navbar">
-                  <div class="container-fluid">
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                      <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                      </div>
-                      <div class="offcanvas-body">
-                        <div class="account-link text-center mb-4">
-                          <a href="#" class="my-account text-decoration-none py-2 px-5 main-bg-green text-white">My account</a>
-                        </div>
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                          <li class="nav-item">
-                            <a class="nav-link active milk-color fw-bold" aria-current="page" href="#">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link milk-color" href="#">About us</a>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle milk-color" href="#" role="button" data-bs-toggle="dropdown"
-                              aria-expanded="false">
-                              Shops
-                            </a>
-                            
-                            <ul class="dropdown-menu ms-2 border-0 bg-dark">
-                              <li><a class="dropdown-item nav-link milk-color" href="#">Clothes</a></li>
-                              <li><a class="dropdown-item nav-link milk-color" href="#">Electronics</a></li>
-                              <li><a class="dropdown-item nav-link milk-color" href="#">Furniture</a></li>
-                              <li><a class="dropdown-item nav-link milk-color" href="#">Shoes</a></li>
-                              <li><a class="dropdown-item nav-link milk-color" href="#">Others</a></li>
-                            </ul>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link milk-color" href="#">Contact</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 d-flex align-items-center justify-content-between">
-                <a class="nav-link ms-2 me-2 position-relative fa-2xl fa-solid fa-cart-shopping fa-shopping-fixed text-dark" aria-current="page"
-                  href="cart.html">
-                  <span class="position-absolute translate-middle badge rounded main-bg-blue text-white" id="cart-items"
-                      style="font-size: 11px; left: 100%; bottom: -4px;">
-                      0
-                  </span>
-                </a>
-                <button class="btn border-0 ms-3 me-2 search-navbar-fixed" aria-current="page" href="#">
-                  <i class="fa-solid fa-xl fa-magnifying-glass text-dark"></i>
-                </button>
-                <a href="#" class="text-decoration-none text-dark w-bold my-account-fixed py-2 px-2">My account</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <form class="position-absolute top-25 left-0  d-none search-navbar-box-fixed" style="z-index: 2;" >
-        <div class="d-flex align-items-center">
-          <input type="text" class="form-control rounded-0 border-0 pt-3 pb-3 bg-dark text-white" placeholder="Enter your search here">
-          <button type="button" class="fa-solid fa-xmark position-absolute border-0 bg-dark text-white close-search-btn-fixed" style="left: 90% !important;"></button>
-        </div>
-      </form>
-    </div>
+
 
     <section id="hero-section">
-      <div class="tab-laptop-navbar d-none fixed-top mt-4">
+      <div class="tab-laptop-navbar d-none fixed-top mt-4" id="top-page">
         <div class="container">
           <div class="d-flex tab-nav-js">
             <div class="top-bar-left d-flex justify-content-between pt-2 pb-2 bg-white">
               <div class="w-25">
-                <a href="#"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
+                <a href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
               </div>
               <nav class="navbar">
                 <div class="container-fluid">
@@ -223,7 +154,7 @@
             <div class="top-bar-right d-flex align-items-center justify-content-between ps-2 pe-4">
                 <a class="nav-link ms-2 me-2 position-relative fa-2xl fa-solid fa-cart-shopping milk-color" aria-current="page"
                   href="cart.html">
-                  <span class="position-absolute translate-middle badge rounded main-bg-green text-dark" id="cart-items"
+                  <span class="position-absolute translate-middle badge rounded main-bg-green text-dark cart-items-fixed"
                       style="font-size: 11px; left: 100%; bottom: -4px;">
                       0
                   </span>
@@ -309,11 +240,6 @@
         </div>
     </section>
 
-
-
-
-
-
     <section id="hot-selling-section" class="milk-color-bg">
       <div class="container">
         <h4 class="fs-1 text-center pb-2">Daily Hot Deals</h4>
@@ -332,10 +258,270 @@
       </div>
     </section>
 
+    <section id="featured-products">
+      <div class="container">
+        <h2 class="text-center fw-bold">Featured Products</h2>
+        <p class="mb-5 text-center fs-5">Our best selling products</p>
 
+        <div class="featured-tab-content d-flex justify-content-center">
+          <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active border-0 fw-bold main-blue-color" id="clothes-tab" data-bs-toggle="tab" data-bs-target="#clothes-tab-pane" type="button" role="tab" aria-controls="clothes-tab-pane" aria-selected="true">Clothes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link border-0 fw-bold main-blue-color" id="shoes-tab" data-bs-toggle="tab" data-bs-target="#shoes-tab-pane" type="button" role="tab" aria-controls="shoes-tab-pane" aria-selected="false">Shoes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link border-0 fw-bold main-blue-color" id="others-tab" data-bs-toggle="tab" data-bs-target="#others-tab-pane" type="button" role="tab" aria-controls="others-tab-pane" aria-selected="false">Others</button>
+            </li>
+          </ul>
+        </div>
 
+        <div class="tab-content mt-5" id="myTabContent">
 
-    </main>
+          <div class="tab-pane fade show active" id="clothes-tab-pane" role="tabpanel" aria-labelledby="clothes-tab" tabindex="0">
+            <div class="row" id="clothes-tab-show">
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="shoes-tab-pane" role="tabpanel" aria-labelledby="shoes-tab" tabindex="0">
+            <div class="row" id="shoes-tab-show">
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="others-tab-pane" role="tabpanel" aria-labelledby="others-tab" tabindex="0">
+            <div class="row" id="others-tab-show">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="trending-categories">
+      <div class="container">
+        <h2 class="text-center  fw-bold">Trending Categories</h2>
+        <p class="text-center mb-5 fs-5">Our best selling categories</p>
+        <div class="row">
+          <div class="col-lg-7 col-md-7 mb-5">
+            <div class="shoes-cat mb-3 categories-bg-color position-relative w-100">
+              <div class="cat-text">
+                <h5 class="fw-bold">Shoes Category</h5>
+                <p class="fs-5">Shoes from as low as $50</p>
+              </div>
+              <img src="img/shoe-cat-img.webp" alt="shoe image" class="img-fluid shoe-img-cat main-img-cat">
+              <a href="#" class="text-decoration-none main-bg-blue text-white rounded px-4 py-2 position-absolute shop-now">SHOP NOW</a>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="electronics-cat mb-3">
+                  <div class="cat-text">
+                    <h5 class="fw-bold">Electronics Category</h5>
+                    <p class="fs-5">From as low as $250</p>
+                  </div>
+                  <img src="img/electronics-img-cat.webp" alt="" class="img-fluid electronic-img-cat position-absolute">
+                  <a href="#" class="text-decoration-none main-bg-blue text-white rounded px-4 py-2 position-absolute shop-now">SHOP NOW</a>
+                </div>
+              </div>
+              <div class="col-lg-6 furniture-table-remove">
+                <div class="furniture-cat mb-3">
+                  <div class="cat-text">
+                    <h5 class="fw-bold">Furniture Category</h5>
+                    <p class="fs-5">From as low as $1500</p>
+                  </div>
+                  <a href="#" class="text-decoration-none main-bg-blue text-white rounded px-4 py-2 position-absolute shop-now">SHOP NOW</a>
+                  <img src="img/furniture-img-cat.webp" alt class="img-fluid electronic-img-cat position-absolute">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-5 mb-5">
+            <div class="clothes-cat categories-bg-color position-relative w-100 mb-3">
+              <div class="cat-text">
+                <h5 class="fw-bold">Clothes Category</h5>
+                <p class="fs-5">Clothes from as low as $80</p>
+              </div>
+              <img src="img/clothes-img-cat.webp" alt="girl wearing red flaired gown" class="clothes-img-cat main-img-cat">
+              <a href="#" class="text-decoration-none main-bg-blue text-white rounded px-4 py-2 position-absolute shop-now">SHOP NOW</a>
+            </div>
+            <div class="furniture-cat mb-3 furniture-remove-laptop">
+              <div class="cat-text">
+                <h5 class="fw-bold">Furniture Category</h5>
+                <p class="fs-5">From as low as $1500</p>
+              </div>
+              <a href="#" class="text-decoration-none main-bg-blue text-white rounded px-4 py-2 position-absolute shop-now">SHOP NOW</a>
+              <img src="img/furniture-img-cat.webp" alt class="img-fluid electronic-img-cat position-absolute">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="who-we-are">
+      <div class="who-we-are-inner">
+        <div class="container mb-5">
+          <h2 class="text-center fw-bold mb-5 fs-1">Who we are</h2>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 px-0">
+              <div class="who-are-we-img">
+                <img src="img/who-we-wre-img.jpg" alt="image of black girls">
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 px-0">
+              <div class="who-we-are-text bg-white w-100 text-center pt-5 pb-5 px-3">
+                <h4 class="pb-4">Our story</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque deleniti 
+                  non minima repudiandae repellat voluptatem excepturi voluptatum omnis, 
+                  alias consectetur cupiditate impedit at voluptatibus quos aut, tempore ipsa 
+                  quisquam iure.
+                </p>
+                <p class="pb-4">In luctus ex eget lorem efficitur, non feugiat magna suscipit. Sed in 
+                    nisi non urna placerat porta eget et massa. Morbi id lectus vel enim faucibus
+                     sagittis non nec elit. In pretium ornare lorem, ac cursus sem malesuada vel. 
+                     Morbi dignissim ligula in maximus laoreet. Suspendisse
+                </p>
+                <a href="about-us.html" class="px-5 py-3 text-decoration-none main-bg-green text-dark fw-bold" style="border-radius:25px 0 25px 0 ;">Read more</a> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="delivery-section">
+      <div class="container">
+        <div class="shipping-route text-center">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="shipping-card">
+                <i class="fa-solid fa-arrow-rotate-left fa-2xl pb-4 main-color-green"></i>
+                <p class="fs-5">7 days return policy</p>
+                <p>Duis in dui non enim condimentum scelerisque. In a porta diam. 
+                  Vestibulum ut odio nisl.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="shipping-card">
+                <i class="fa-solid fa-car-side fa-2xl pb-4 main-blue-color"></i>
+                <p class="fs-5">Shipping is always free</p>
+                <p>Duis in dui non enim condimentum scelerisque. In a porta diam. 
+                  Vestibulum ut odio nisl.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="shipping-card">
+                <i class="fa-solid fa-credit-card fa-2xl pb-4 main-color-green"></i>
+                <p class="fs-5">Online payment option</p>
+                <p>Duis in dui non enim condimentum scelerisque. In a porta diam. 
+                  Vestibulum ut odio nisl.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="shipping-card">
+                <i class="fa-solid fa-truck-fast fa-2xl pb-4 main-blue-color"></i>
+                <p class="fs-5">Quick delivery in 48 hours</p>
+                <p>Duis in dui non enim condimentum scelerisque. In a porta diam. 
+                  Vestibulum ut odio nisl.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="percentage pt-5">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-6 px-0">
+              <div class="first-perc-div">
+                <img src="img/rafaella-mendes-diniz-AoL-mVxprmk-unsplash.webp" alt="" class="first-perc-img">
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-6 px-0">
+              <div class="first-perc-div">
+                <img src="img/mahdi-chaghari-Wxf5A5EeRZM-unsplash.webp" alt="" class="first-perc-img">
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 px-0" style="background-color:#FFC4C4 ;">
+              <div class="per-text d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <h4 class="pb-3">GET 20% OFF</h4>
+                  <p class="pb-3">Nunc lacus sapien, rutrum id gravida at</p>
+                  <a href="#" class="text-decoration-none main-bg-blue text-white rounded px-5 py-2 shop-now">SHOP NOW</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 px-0">
+              <div class="first-perc-div">
+                <img src="img/omid-armin-65JdPsTtL-0-unsplash.webp" alt="" class="first-perc-img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="milk-color-bg mt-5 pt-5 pb-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+            <div class="contact-footer">
+              <div class="logo mb-3">
+                <a href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid logo-footer"></a>
+              </div>
+              <a href = "mailto: contact@quaint-catalogue.com" class="d-block text-decoration-none text-dark mb-4"><i class="fa-solid fa-envelope pe-3"></i>contact@quaint-cat.com</a>
+              <a href = "tel: +2349012345678" class="d-block ext-decoration-none text-dark pb-4"><i class="fa-sharp fa-solid fa-phone pe-3"></i>+2349012345678</a>
+              <ul class="social-links mb-3 d-flex mt-4 ps-0">
+                <li class="nav-link"> <i class="fa-brands fa-facebook fa-xl pe-3"></i></li>
+                <li class="nav-link"><i class="fa-brands fa-square-instagram fa-xl pe-3"></i></li>
+                <li class="nav-link"><i class="fa-brands fa-square-twitter fa-xl pe-3"></i></li>
+                <li class="nav-link"><i class="fa-brands fa-linkedin fa-xl"></i></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+            <div class="delivery-links">
+              <h5 class="pb-2">Delivery</h5>
+              <ul class="ps-0">
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">How it work</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Free delivery</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">FAQ</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Payment methods</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+            <div class="customer-service">
+              <h5 class="pb-2">Customer service</h5>
+              <ul class="ps-0">
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Orders</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Account details</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Addresses</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Lost password</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+            <div class="helpful-links">
+              <h5 class="pb-2">Useful links</h5>
+              <ul class="ps-0">
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Contact us</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Help & about us</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Shipping & returns</a></li>
+                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Refund policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <p><a href="#top-page"><i class="fa-sharp fa-solid fa-arrow-up fa-2xl text-dark"></i></a></p>
+        </div>
+      </div>
+      <hr>
+      <p class="text-center">Website by Omokaro Loveth 2022. Design from themes</p>
+    </footer>
+
+  </main>
 
 
 

@@ -1,10 +1,13 @@
 
 let hotSellingSection = document.querySelector("#hot-deals-row")
-
 let hotDealsArray = [];
 let hotProducts = {}
 
+// Calling the api stored in  our store.json in database
 const api_url = './database/store.json';
+
+
+// creating an async function and fetching the api in the hot products category
 
 async function getHotProductsData(){
   const response =  await fetch (api_url);
@@ -24,6 +27,7 @@ async function getHotProductsData(){
 }
 getHotProductsData()
 
+// Creating a function to display the products filtered in the hot products section
 
 function hotDeals (products) {
   // console.log(products)
@@ -40,14 +44,11 @@ function hotDeals (products) {
     <div class="swiper-slide">
       <div class="card border-0 milk-color-bg">
           <div class="product-img position-relative">
-            <img src="${images}" alt="product image" class="img-fluid">
+            <img src="${images}" alt="product image" class="img-fluid swiper-lazy">
+            <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
             <div class="product-links d-flex position-absolute">
-              <div class="add-to-cart bg-dark d-flex align-items-center justify-content-center me-2">
-                <button id="product-link-${id}" class="border-0 bg-dark "><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
-              </div>
-              <div class="product-details main-bg-blue d-flex align-items-center justify-content-center me-2">
-                <a href="#" id="product-link-${id} "><i class="fa-solid fa-link fa-2xl text-white"></i></a>
-              </div>
+              <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
+              <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
             </div>
           </div>
           <div class="product-descrip mb-4">
@@ -61,46 +62,224 @@ hotSellingSection.innerHTML += hotDealsStrings
 }
 
 
-function randomProducts (){
-  let randomProd = Math.round(Math.random()*4 + 1);
-  return randomProd
+// Add to cart after hover on products
+let cartIdArray = [];
+let priceArray =[]
+let cartOnFixed = document.querySelector(".cart-items-fixed")
+let cartOnScroll = document.querySelector(".cart-items-scroll")
+let count = 0;
+let saveCount;
+
+function addToCart(id, prices){
+  count +=1
+  // Displaying the count on click of addToCart
+  cartOnFixed.innerHTML = count
+  cartOnScroll.innerHTML = count
+  // Saving the value of the count to localstorage
+  localStorage.setItem("count", JSON.stringify(count));
+
+  // getting value of id
+  storeCartId (cartIdArray, id)
+
+  // getting value of prices
+  storeprices (priceArray, prices)
+
 }
-console.log(randomProducts())
+
+function storeCartId (itemCartArray, keyAndValue){
+  //   // Get the existing data
+  let existingProductsCart = window.localStorage.getItem('itemCartArray');
+
+  // Otherwise, convert the localStorage string to an array
+  existingProductsCart = existingProductsCart ? JSON.parse(existingProductsCart) : [];
+  
+  existingProductsCart.unshift(keyAndValue)
+  
+  // Save back to localStorage
+  window.localStorage.setItem('itemCartArray', JSON.stringify(existingProductsCart));
+}
+
+function storeprices (itemPriceArray, price){
+  //   // Get the existing data
+  let existingPriceArray = window.localStorage.getItem('itemPriceArray');
+
+  // Otherwise, convert the localStorage string to an array
+  existingPriceArray = existingPriceArray ? JSON.parse(existingPriceArray) : [];
+  
+  existingPriceArray.unshift(price)
+  
+  // Save back to localStorage
+  window.localStorage.setItem('itemPriceArray', JSON.stringify(existingPriceArray));
+}
 
 
-// fetch('https://dummyjson.com/products/categories')
-// .then(res=>res.json())
-// .then(json=>console.log(json))
+// Saving and displaying the count on reload
 
-// fetch('https://dummyjson.com/products/category/sunglasses')
-// .then(res=>res.json())
-// .then(json=>console.log(json.products))
-
-// fetch('https://fakestoreapi.com/products/categories')
-//             .then(res=>res.json())
-//             .then(json=>console.log(json))
+window.onload = () => {
+  count = localStorage.getItem("count")
+    ? JSON.parse(localStorage.getItem("count"))
+    : 0;
+  cartOnFixed.textContent = count;
+  cartOnScroll.textContent = count;
+};
 
 
+//  Product Details section
 
-//             fetch('https://fakestoreapi.com/products/category/jewelery')
-//             .then(res=>res.json())
-//             .then(json=>console.log(json))
+async function productDetails(id){
+  const response =  await fetch (api_url);
+  data = await response.json();
+  // console.log(data)
+  // console.log(id)
+  for (let i=0; i<data.length; i++){
+    // console.log(data[i].id)
+    if (data[i].id === id){
+      // console.log(data[i])
+      localStorage.setItem('productDetails', JSON.stringify(data[i]))
+      // window.location.href = 'product-details.html';
+    }
+  }
+
+}
 
 
+// FEATURED PRODUCTS SECTION
 
 
+const clothesTabShow = document.querySelector("#clothes-tab-show");
+const shoesTabShow = document.querySelector("#shoes-tab-show");
+const furnitureTabShow = document.querySelector("#others-tab-show");
+let featuredClothesArray = [];
+
+async function featuredClothesData (){
+  const response =  await fetch (api_url);
+  featuredClothesArray = await response.json();
+  featuredClothesArray = featuredClothesArray.slice(1,49)
+  for (let i=0; i<featuredClothesArray.length; i++){
+    // console.log(featuredClothesArray[i].category)
+    if (featuredClothesArray[i].category.name === 'Clothes'){
+      let clothes =featuredClothesArray[i]
+      featuredClothes (clothes)
+    }
+  }
+}
+featuredClothesData()
+
+function featuredClothes (clothesData){
+  let {id, images, price, title} = clothesData
+  // let id = clothesData.id
+  // let images = clothesData.images
+  // let price = clothesData.price
+  // let title = clothesData.title
+
+  let clothesTabStrings=""
+  clothesTabStrings += `
+    <div class="col-lg-3 col-md-6">
+      <div class="card border-0">
+        <div class="product-img position-relative">
+          <img src="${images[1]} alt="product image" class="img-fluid">
+          <div class="product-links d-flex position-absolute">
+            <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
+            <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
+          </div>
+        </div>
+        <div class="product-descrip mb-4">
+          <p class="product-name pt-3 mb-1 fs-5">${title}</p>
+          <p class="product-price fw-bold">$${price}</p>
+        </div>
+      </div>
+  </div>
+  `
+  clothesTabShow.innerHTML += clothesTabStrings;
+}
 
 
+// SHOES TAB SHOW
+
+async function featuredShoesData (){
+  const response =  await fetch (api_url);
+  let featuredShoesArray = await response.json();
+  featuredShoesArray = featuredShoesArray.slice(1,49)
+  for (let i=0; i<featuredShoesArray.length; i++){
+    // console.log(featuredShoesArray[i].category)
+    if (featuredShoesArray[i].category.name === 'Shoes'){
+      let shoes =featuredShoesArray[i]
+      featuredShoes(shoes)
+      // console.log(shoes.id)
+    }
+  }
+}
+featuredShoesData()
+
+function featuredShoes (shoesData){
+  let {id, images, price, title} = shoesData
+  // let id = shoesData.id
+  // let images = shoesData.images
+  // let price = shoesData.price
+  // let title = shoesData.title
+
+  let shoesTabStrings=""
+  shoesTabStrings += `
+    <div class="col-lg-3 col-md-6">
+      <div class="card border-0">
+        <div class="product-img position-relative">
+          <img src="${images[0]} alt="product image" class="img-fluid">
+          <div class="product-links d-flex position-absolute">
+            <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
+            <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
+          </div>
+        </div>
+        <div class="product-descrip mb-4">
+          <p class="product-name pt-3 mb-1 fs-5">${title}</p>
+          <p class="product-price fw-bold">$${price}</p>
+        </div>
+      </div>
+  </div>
+  `
+  shoesTabShow.innerHTML += shoesTabStrings;
+}
 
 
+// FURNITURE TAB SHOW
 
+async function featuredFurnitureData(){
+  const response =  await fetch (api_url);
+  let featuredFurnitureArray  = []
+  featuredFurnitureArray = await response.json();
+  featuredFurnitureArray = featuredFurnitureArray.slice(1,43)
+  for (let i=0; i<featuredFurnitureArray.length; i++){
+    // console.log(featuredFurnitureArray[i].category.name)
+    if (featuredFurnitureArray[i].category.name === 'Furniture'){
+      let furniture =featuredFurnitureArray[i]
+      // console.log(furniture)
+      featuredFurniture (furniture)
+    }
+  }
+}
+featuredFurnitureData()
 
-
-
-
-
-
-
+function featuredFurniture (furnitureData){
+  let {id, images, price, title} = furnitureData
+  let furnitureTabStrings=""
+  furnitureTabStrings += `
+    <div class="col-lg-3 col-md-6">
+      <div class="card border-0">
+        <div class="product-img position-relative">
+          <img src="${images[1]} alt="product image" class="img-fluid">
+          <div class="product-links d-flex position-absolute">
+            <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
+            <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
+          </div>
+        </div>
+        <div class="product-descrip mb-4">
+          <p class="product-name pt-3 mb-1 fs-5">${title}</p>
+          <p class="product-price fw-bold">$${price}</p>
+        </div>
+      </div>
+  </div>
+  `
+  furnitureTabShow.innerHTML += furnitureTabStrings;
+}
 
 
 
@@ -141,21 +320,6 @@ closeSearchBtnScroll.addEventListener("click", () => {
 })
 
 
-// Showing the search input for fixed on tab and laptop views
-const searchNavBtnFixed= document.querySelector(".search-navbar-fixed"); 
-let searchNavBoxFixed = document.querySelector(".search-navbar-box-fixed");
-searchNavBtnFixed.addEventListener("click", () => {
-  console.log('clicked')
-  searchNavBoxFixed.classList.toggle("d-none")
-})
-
-// Closing search input for fixed on tab and laptop views
-const closeSearchBtnFixed = document.querySelector(".close-search-btn-fixed")
-closeSearchBtnFixed.addEventListener("click", () => {
-  searchNavBoxFixed.classList.toggle("d-none")
-})
-
-
 
 
 
@@ -168,12 +332,16 @@ window.addEventListener("scroll", ()=> {
   if (lastScrollY < window.scrollY){
     // console.log("we are going down")
     tabLapNav.classList.add("d-none")
-    // console.log(searchNavBoxScroll.classList)
     searchNavBoxScroll.classList.add("d-none")
   } else{
     // console.log(window.scrollY)
     if (window.scrollY === 0){
-      tabLapNav.classList.remove("d-none")
+      if (screen.availWidth < 768){
+        tabLapNav.classList.add("d-none")
+        searchNavBoxScroll.classList.add("d-none")
+      }else{
+        tabLapNav.classList.remove("d-none")
+      }
     }
   }
   lastScrollY = window.scrollY;
@@ -181,24 +349,26 @@ window.addEventListener("scroll", ()=> {
 
 // Showing fixed tablet and laptop nav on scroll
 let lastScrollOnY = window.scrollY;
-const fixedNavLaptop = document.querySelector(".fixed-nav-laptop")
-const navbarFixed2 = document.querySelector(".navbar-fixed-2")
+const fixedNavLaptop = document.querySelector(".mobile-header")
+
 window.addEventListener("scroll", ()=> {
   if (window.scrollY === 0){
-    console.log(window.scrollY)
-    fixedNavLaptop.classList.add("d-none")
-    searchNavBoxFixed.classList.add("d-none")
+    if (screen.availWidth < 768){
+      fixedNavLaptop.classList.remove("d-none")
+    }else{
+      fixedNavLaptop.classList.add("d-none")
+      console.log(window.scrollY)
+    }
   } else {
     if (lastScrollOnY < window.scrollY){
       fixedNavLaptop.classList.remove("d-none")
-      navbarFixed2.classList.add("unhidden")
     }
     
   }
   lastScrollOnY = window.scrollY;
 })
 
-// Swipper Js Javascript style
+// Swiper js for hero section bg images
 
 var swiper = new Swiper(".mySwiper", {
     autoplay: {
@@ -216,15 +386,12 @@ var swiper = new Swiper(".mySwiper", {
     },
   });
 
-  // Hot Deals swipper
-
-
+  // Hot Deals swipper js
   var swiperHot = new Swiper(".hotSwiper", {
     autoplay: {
       delay: 2000,
-      disableOnInteraction: false,
     },
-    loop: true,
+    lazy: true,
     breakpoints: {
       250: {
         slidesPerView: 1,
