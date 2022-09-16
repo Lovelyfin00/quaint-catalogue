@@ -1,0 +1,15 @@
+/* cart image */
+.cart-img img{
+    max-height: 110px;
+    width: 100%;
+}
+#empty-cart{
+    display: none;
+}
+#product-quantity{
+    width: 100px !important;
+    text-align: center;
+}
+#product-quantity:focus{
+    border: 1px solid white !important;
+}

@@ -4,21 +4,21 @@ let hotDealsArray = [];
 let hotProducts = {}
 
 // Calling the api stored in  our store.json in database
-const api_url = './database/store.json';
+const api_url = 'https://dummyjson.com/products?skip=1&limit=100';
 
 
 // creating an async function and fetching the api in the hot products category
 
 async function getHotProductsData(){
   const response =  await fetch (api_url);
-  hotDealsArray = await response.json();
-
-  hotDealsArray = hotDealsArray.slice(159 ,185)
+  let data = await response.json();
+  hotDealsArray = data.products
+  hotDealsArray = hotDealsArray.slice(43 ,56)
     for (const product of hotDealsArray){
-      // console.log(product)
-      const catagoryName = product.category.name;
-      if (catagoryName === "Clothes" || catagoryName === "Shoes"){
-        // hotProducts = product.id 
+      // console.log(product.category)
+      const catagoryName = product.category;
+      if (catagoryName === "mens-shoes" || catagoryName === "womens-dresses" || catagoryName === "mens-shirts" ){
+        // console.log(hotProducts = product.id )
         hotProducts = product 
         // console.log(hotProducts)
         hotDeals(hotProducts)
@@ -32,7 +32,7 @@ getHotProductsData()
 function hotDeals (products) {
   // console.log(products)
   let id = products.id
-  let images = products.images
+  let [...images] = products.images
   let price = products.price
   let title = products.title
   // console.log(id)
@@ -44,7 +44,7 @@ function hotDeals (products) {
     <div class="swiper-slide">
       <div class="card border-0 milk-color-bg">
           <div class="product-img position-relative">
-            <img src="${images}" alt="product image" class="img-fluid swiper-lazy">
+            <img src="${images[1]}" alt="product image" class="img-fluid swiper-lazy">
             <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
             <div class="product-links d-flex position-absolute">
               <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
@@ -62,13 +62,7 @@ hotSellingSection.innerHTML += hotDealsStrings
 }
 
 
-// Add to cart after hover on products
-let cartIdArray = [];
-let priceArray =[]
-let cartOnFixed = document.querySelector(".cart-items-fixed")
-let cartOnScroll = document.querySelector(".cart-items-scroll")
-let count = 0;
-let saveCount;
+// add to cart
 
 function addToCart(id, prices){
   count +=1
@@ -86,78 +80,24 @@ function addToCart(id, prices){
 
 }
 
-function storeCartId (itemCartArray, keyAndValue){
-  //   // Get the existing data
-  let existingProductsCart = window.localStorage.getItem('itemCartArray');
-
-  // Otherwise, convert the localStorage string to an array
-  existingProductsCart = existingProductsCart ? JSON.parse(existingProductsCart) : [];
-  
-  existingProductsCart.unshift(keyAndValue)
-  
-  // Save back to localStorage
-  window.localStorage.setItem('itemCartArray', JSON.stringify(existingProductsCart));
-}
-
-function storeprices (itemPriceArray, price){
-  //   // Get the existing data
-  let existingPriceArray = window.localStorage.getItem('itemPriceArray');
-
-  // Otherwise, convert the localStorage string to an array
-  existingPriceArray = existingPriceArray ? JSON.parse(existingPriceArray) : [];
-  
-  existingPriceArray.unshift(price)
-  
-  // Save back to localStorage
-  window.localStorage.setItem('itemPriceArray', JSON.stringify(existingPriceArray));
-}
-
-
-// Saving and displaying the count on reload
-
-window.onload = () => {
-  count = localStorage.getItem("count")
-    ? JSON.parse(localStorage.getItem("count"))
-    : 0;
-  cartOnFixed.textContent = count;
-  cartOnScroll.textContent = count;
-};
-
-
-//  Product Details section
-
-async function productDetails(id){
-  const response =  await fetch (api_url);
-  data = await response.json();
-  // console.log(data)
-  // console.log(id)
-  for (let i=0; i<data.length; i++){
-    // console.log(data[i].id)
-    if (data[i].id === id){
-      // console.log(data[i])
-      localStorage.setItem('productDetails', JSON.stringify(data[i]))
-      // window.location.href = 'product-details.html';
-    }
-  }
-
-}
-
-
-// FEATURED PRODUCTS SECTION
+// // FEATURED PRODUCTS SECTION
 
 
 const clothesTabShow = document.querySelector("#clothes-tab-show");
 const shoesTabShow = document.querySelector("#shoes-tab-show");
-const furnitureTabShow = document.querySelector("#others-tab-show");
+const furnitureTabShow = document.querySelector("#home-decoration-tab-show");
 let featuredClothesArray = [];
 
 async function featuredClothesData (){
   const response =  await fetch (api_url);
-  featuredClothesArray = await response.json();
-  featuredClothesArray = featuredClothesArray.slice(1,49)
+  data = await response.json();
+  data = data.products;
+  featuredClothesArray = data
+  // console.log(featuredClothesArray)
+  featuredClothesArray = featuredClothesArray.slice(36,44)
   for (let i=0; i<featuredClothesArray.length; i++){
     // console.log(featuredClothesArray[i].category)
-    if (featuredClothesArray[i].category.name === 'Clothes'){
+    if (featuredClothesArray[i].category === 'womens-dresses' || featuredClothesArray[i].category === 'tops'){
       let clothes =featuredClothesArray[i]
       featuredClothes (clothes)
     }
@@ -171,13 +111,15 @@ function featuredClothes (clothesData){
   // let images = clothesData.images
   // let price = clothesData.price
   // let title = clothesData.title
+  images = images[1]
+  // console.log(images)
 
   let clothesTabStrings=""
   clothesTabStrings += `
     <div class="col-lg-3 col-md-6">
       <div class="card border-0">
         <div class="product-img position-relative">
-          <img src="${images[1]} alt="product image" class="img-fluid">
+          <img src="${images}" alt="product image" class="img-fluid">
           <div class="product-links d-flex position-absolute">
             <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
             <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
@@ -199,10 +141,12 @@ function featuredClothes (clothesData){
 async function featuredShoesData (){
   const response =  await fetch (api_url);
   let featuredShoesArray = await response.json();
-  featuredShoesArray = featuredShoesArray.slice(1,49)
+  featuredShoesArray = featuredShoesArray.products
+  // console.log(featuredShoesArray)
+  featuredShoesArray = featuredShoesArray.slice(46, 59)
   for (let i=0; i<featuredShoesArray.length; i++){
     // console.log(featuredShoesArray[i].category)
-    if (featuredShoesArray[i].category.name === 'Shoes'){
+    if (featuredShoesArray[i].category === 'mens-shoes' || featuredShoesArray[i].category === 'womens-shoes'){
       let shoes =featuredShoesArray[i]
       featuredShoes(shoes)
       // console.log(shoes.id)
@@ -217,13 +161,15 @@ function featuredShoes (shoesData){
   // let images = shoesData.images
   // let price = shoesData.price
   // let title = shoesData.title
+  images = images[0]
+  // console.log(images)
 
   let shoesTabStrings=""
   shoesTabStrings += `
     <div class="col-lg-3 col-md-6">
       <div class="card border-0">
         <div class="product-img position-relative">
-          <img src="${images[0]} alt="product image" class="img-fluid">
+          <img src="${images}" alt="product image" class="img-fluid">
           <div class="product-links d-flex position-absolute">
             <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
             <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
@@ -246,12 +192,13 @@ async function featuredFurnitureData(){
   const response =  await fetch (api_url);
   let featuredFurnitureArray  = []
   featuredFurnitureArray = await response.json();
-  featuredFurnitureArray = featuredFurnitureArray.slice(1,43)
+  featuredFurnitureArray = featuredFurnitureArray.products
+  featuredFurnitureArray = featuredFurnitureArray.slice(26,34)
   for (let i=0; i<featuredFurnitureArray.length; i++){
-    // console.log(featuredFurnitureArray[i].category.name)
-    if (featuredFurnitureArray[i].category.name === 'Furniture'){
+    // console.log(featuredFurnitureArray[i].category)
+    if (featuredFurnitureArray[i].category === 'furniture' || featuredFurnitureArray[i].category === 'home-decoration'){
       let furniture =featuredFurnitureArray[i]
-      // console.log(furniture)
+      // console.log(furniture.id)
       featuredFurniture (furniture)
     }
   }
@@ -260,12 +207,14 @@ featuredFurnitureData()
 
 function featuredFurniture (furnitureData){
   let {id, images, price, title} = furnitureData
+  images = images[2]
+  // console.log(images)
   let furnitureTabStrings=""
   furnitureTabStrings += `
     <div class="col-lg-3 col-md-6">
       <div class="card border-0">
         <div class="product-img position-relative">
-          <img src="${images[1]} alt="product image" class="img-fluid">
+          <img src="${images}" alt="product image" class="img-fluid">
           <div class="product-links d-flex position-absolute">
             <button onclick="addToCart(${id}, ${price})" class="border-0 bg-dark add-to-cart me-2"><i class="fa-sharp fa-solid fa-cart-shopping fa-2xl text-white"></i></button>
             <button onclick="productDetails(${id})" class="border-0 main-bg-blue me-2 d-flex align-items-center justify-content-center"><i class="fa-solid fa-link fa-2xl text-white"></i></button>
@@ -290,85 +239,8 @@ window.addEventListener("load", () => {
 
 
 
-// Showing the search input on mobile view
-const searchNavBtnMobile = document.querySelector(".search-navbar-mobile");
-let searchNavBoxMobile = document.querySelector(".search-navbar-box-mobile");
 
-searchNavBtnMobile.addEventListener("click", () => {
-  console.log('clicked')
-  searchNavBoxMobile.classList.toggle("d-none")
-})
-
-// Closing search input on mobile screen
-const closeSearchBtn = document.querySelector(".close-search-btn")
-closeSearchBtn.addEventListener("click", () => {
-  searchNavBoxMobile.classList.toggle("d-none")
-})
-
-// Showing the search input for scroll on tab and laptop views
-const searchNavBtnScroll = document.querySelector(".search-navbar-scroll"); 
-let searchNavBoxScroll = document.querySelector(".search-navbar-box-scroll");
-searchNavBtnScroll.addEventListener("click", () => {
-  console.log('clicked')
-  searchNavBoxScroll.classList.toggle("d-none")
-})
-
-// Closing search input for scroll on tab and laptop views
-const closeSearchBtnScroll = document.querySelector(".close-search-btn-scroll")
-closeSearchBtnScroll.addEventListener("click", () => {
-  searchNavBoxScroll.classList.toggle("d-none")
-})
-
-
-
-
-
-// Hiding tablet and laptop navigation on scroll
-const tabLapNav = document.querySelector(".tab-nav-js");
-
-let lastScrollY = window.scrollY;
-
-window.addEventListener("scroll", ()=> {
-  if (lastScrollY < window.scrollY){
-    // console.log("we are going down")
-    tabLapNav.classList.add("d-none")
-    searchNavBoxScroll.classList.add("d-none")
-  } else{
-    // console.log(window.scrollY)
-    if (window.scrollY === 0){
-      if (screen.availWidth < 768){
-        tabLapNav.classList.add("d-none")
-        searchNavBoxScroll.classList.add("d-none")
-      }else{
-        tabLapNav.classList.remove("d-none")
-      }
-    }
-  }
-  lastScrollY = window.scrollY;
-})
-
-// Showing fixed tablet and laptop nav on scroll
-let lastScrollOnY = window.scrollY;
-const fixedNavLaptop = document.querySelector(".mobile-header")
-
-window.addEventListener("scroll", ()=> {
-  if (window.scrollY === 0){
-    if (screen.availWidth < 768){
-      fixedNavLaptop.classList.remove("d-none")
-    }else{
-      fixedNavLaptop.classList.add("d-none")
-      console.log(window.scrollY)
-    }
-  } else {
-    if (lastScrollOnY < window.scrollY){
-      fixedNavLaptop.classList.remove("d-none")
-    }
-    
-  }
-  lastScrollOnY = window.scrollY;
-})
-
-// Swiper js for hero section bg images
+// // Swiper js for hero section bg images
 
 var swiper = new Swiper(".mySwiper", {
     autoplay: {

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- External links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://kit.fontawesome.com/d972efdfc6.js" crossorigin="anonymous"></script>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-details.css">
+
+    <title>Product</title>
+</head>
+<body>
+    <main>
+        <header class="mobile-header d-none fixed-top">
+            <nav class="navbar bg-light">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between left-navbar">
+                        <a class="navbar-brand" href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
+                        <button class="navbar-toggler border-0 navbar-toggler-tablet" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <a class="nav-link ms-2 me-2 position-relative fa-xl fa-solid fa-cart-shopping" aria-current="page"
+                            href="cart.html">
+                            <span class="position-absolute translate-middle badge rounded main-bg-blue cart-items-scroll"
+                                style="font-size: 11px; left: 100%; bottom: -4px;">
+                                0
+                            </span>
+                        </a>
+                        <button class="btn border-0 ms-3 me-2 search-navbar-mobile" aria-current="page" href="#"><i
+                                class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <a href="#" class="text-decoration-none text-dark w-bold my-account-fixed py-2 px-2">My account</a>
+                        <button class="navbar-toggler navbar-toggler-mobile border-0" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="offcanvas w-75 offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header ">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                            <button type="button" class="btn-close " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="account-link text-center mb-4">
+                                <a href="#" class="my-account text-decoration-none py-2 px-3 main-bg-blue text-white">My
+                                    account</a>
+                            </div>
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About us</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Shops
+                                    </a>
+        
+                                    <ul class="dropdown-menu ms-2 border-0">
+                                        <li><a class="dropdown-item nav-link" href="#">Clothes</a></li>
+                                        <li><a class="dropdown-item nav-link" href="#">Electronics</a></li>
+                                        <li><a class="dropdown-item nav-link" href="#">Furniture</a></li>
+                                        <li><a class="dropdown-item nav-link" href="#">Shoes</a></li>
+                                        <li><a class="dropdown-item nav-link" href="#">Others</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <form class="position-absolute top-25 left-0 w-100 d-none search-navbar-box-mobile" style="z-index: 2;">
+                <div class="d-flex align-items-center">
+                    <input type="text" class="form-control rounded-0 border-0 pt-2 pb-2 bg-dark text-white"
+                        placeholder="Enter your search here">
+                    <button type="button"
+                        class="fa-solid fa-xmark position-absolute border-0 bg-dark text-white close-search-btn"
+                        style="left: 90% !important;"></button>
+                </div>
+            </form>
+        </header>
+      
+        <section id="hero-section-product">
+            <div class="tab-laptop-navbar d-none fixed-top mt-4">
+                <div class="container">
+                    <div class="d-flex tab-nav-js">
+                        <div class="top-bar-left d-flex justify-content-between pt-2 pb-2 bg-white">
+                            <div class="w-25">
+                                <a href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid"></a>
+                            </div>
+                            <nav class="navbar">
+                                <div class="container-fluid">
+                                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasDarkNavbar2" aria-controls="offcanvasDarkNavbar2">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar2"
+                                        aria-labelledby="offcanvasDarkNavbarLabel">
+                                        <div class="offcanvas-header">
+                                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <div class="account-link text-center mb-4">
+                                                <a href="#"
+                                                    class="my-account text-decoration-none py-2 px-5 main-bg-green text-white">My
+                                                    account</a>
+                                            </div>
+                                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active milk-color fw-bold" aria-current="page"
+                                                        href="#">Home</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link milk-color" href="#">About us</a>
+                                                </li>
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle milk-color" href="#" role="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Shops
+                                                    </a>
+        
+                                                    <ul class="dropdown-menu ms-2 border-0 bg-dark">
+                                                        <li><a class="dropdown-item nav-link milk-color" href="#">Clothes</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item nav-link milk-color"
+                                                                href="#">Electronics</a></li>
+                                                        <li><a class="dropdown-item nav-link milk-color" href="#">Furniture</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item nav-link milk-color" href="#">Shoes</a></li>
+                                                        <li><a class="dropdown-item nav-link milk-color" href="#">Others</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link milk-color" href="#">Contact</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="top-bar-middle main-bg-blue">
+        
+                        </div>
+                        <div class="top-bar-right d-flex align-items-center justify-content-between ps-2 pe-4">
+                            <a class="nav-link ms-2 me-2 position-relative fa-2xl fa-solid fa-cart-shopping milk-color"
+                                aria-current="page" href="cart.html">
+                                <span
+                                    class="position-absolute translate-middle badge rounded main-bg-green text-dark cart-items-fixed"
+                                    style="font-size: 11px; left: 100%; bottom: -4px;">
+                                    0
+                                </span>
+                            </a>
+                            <button class="btn border-0 ms-3 me-2 search-navbar-scroll" aria-current="page" href="#">
+                                <i class="fa-solid fa-xl fa-magnifying-glass milk-color"></i>
+                            </button>
+                            <a href="#" class="text-decoration-none milk-color fw-bold my-account py-2 px-2">My account</a>
+                        </div>
+                    </div>
+                    <form class="position-absolute top-25 left-0 d-none search-navbar-box-scroll" style="z-index: 2;">
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control rounded-0 border-0 pt-3 pb-3 bg-dark text-white"
+                                placeholder="Enter your search here">
+                            <button type="button"
+                                class="fa-solid fa-xmark position-absolute border-0 bg-dark text-white close-search-btn-scroll"
+                                style="left: 90% !important;"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <h1 class="shop-name main-blue-color fw-bold">Shop</h1>
+        </section>
+
+        <section id="product-details">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-5 mb-4" id="product-bg-img">
+                        
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="product-text">
+                            <div data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in" data-aos-duration="1000">
+                                <h3 id="title" class="fw-bold pt-4 pb-3">Lorem ipsum dolor</h3>
+                                <h4 class="main-blue-color fw-bold pt-2 pb-2"><s class="fs-6 text-dark fw-light" id="without-discount"></s> <span id="price"></span></h4>
+                                <hr>
+                                <p class="fs-5 pt-2" id="short-description">Phasellus sed ligula sit amet nisl luctus placerat id at purus. Quisque sed sapien 
+                                    id massa interdum ultricies ac eget justo. Vivamus volutpat odio et odio fermentum, 
+                                    in finibus leo dignissim.</p>
+                            </div>
+                            <div data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in" data-aos-duration="1000">
+                                <h6 class="fs-5 fw-bold pt-3 pb-2">What makes it good</h6>
+                                <ul>
+                                    <li class="pb-3">Long lasting</li>
+                                    <li class="pb-3">Durable and beautiful</li>
+                                    <li class="pb-3">Highly resistant to wear and tear</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="product-counter" id="counter-cart-sec">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 mt-3 mb-3">
+                                            <div class="position-relative">
+                                            <button class="fa-sharp fa-solid fa-minus border-0 bg-white position-absolute" id="decrement" onclick="decrementBtn ()"></button>
+                                            <div class="w-75 m-auto">
+                                                <input type="number" value="1" id="counter-quantity" class="pt-2 pb-2 text-center w-100">
+                                            </div>
+                                            <button class="fa-sharp fa-solid fa-plus border-0 bg-white position-absolute" id="increment" onclick="incrementBtn()"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 mt-3 mb-3 product-cart" id="add-to-cart-details">
+                                            <button class="border-0 main-bg-blue pt-2 pb-2 text-white px-5">Add to cart</button>
+                                        </div>
+                                    </div>
+                                    <div class="checkout-div text-center mt-4">
+                                        <button class="border-0 main-bg-green text-dark fw-bold" >Proceed to checkout</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="long-product-descrip">
+            <div class="container mb-5 mt-5">
+                <h6 class="main-blue-color fw-bold" id="description">Description</h6>
+                <hr>
+                <p class="border-bottom">
+                </p>
+                <div class="main-description">
+                    <h5 class="py-3 fw-bold">Long lasting</h5>
+                    <div data-aos="fade-down" data-aos-delay="50" data-aos-easing="ease-in" data-aos-duration="1000">
+                        <p id="long-description" class="grey-color">
+                            Cras aliquet interdum accumsan. Sed libero diam, tincidunt nec odio id, interdum pharetra ligula. Aenean et dolor erat. Praesent malesuada, nisi ac consectetur facilisis, 
+                        </p>
+                    </div>
+                    <div data-aos="fade-down" data-aos-delay="100" data-aos-easing="ease-in" data-aos-duration="600">
+                        <p class="grey-color">
+                            Proin convallis id sapien eget sodales. Nullam volutpat lacinia rutrum. In sodales odio eros, 
+                            quis dignissim nisi mollis et. Cras vel arcu a nisi varius malesuada id quis quam. Aliquam tristique consequat 
+                            congue. Pellentesque ornare facilisis massa, vitae lacinia mi consectetur in. Proin commodo varius nulla, 
+                            in ultrices lacus commodo sed. Nam pretium ultricies quam, mollis sagittis ex venenatis posuere. Curabitur vitae 
+                            nisl a purus ultrices tempor in ac tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere 
+                            cubilia curae; Fusce justo libero, ornare non ultrices eu, feugiat pharetra eros. Proin pretium scelerisque tempus. 
+                            In sed congue enim, eu efficitur ipsum. Donec eget vehicula nisi, nec pellentesque leo.
+                             Nulla facilisi. Curabitur ultricies id mauris ut venenatis.
+                        </p>
+                    </div>
+                    <div data-aos="zoom-in-out" data-aos-delay="50" data-aos-easing="ease-in" data-aos-duration="600">
+                        <div class="descrip-img mt-5 mb-5 text-center">
+                            <img src="img/joren-aranas-nmuyqgSOpEE-unsplash.jpg" alt="product image 2" class="img-fluid" id="descrip-img-1">
+                        </div>
+                    </div>
+                    <h5 class="py-3 fw-bold">Great quality</h5>
+                    <div data-aos="fade-down" data-aos-delay="120" data-aos-easing="ease-in" data-aos-duration="600">
+                        <p class="grey-color">
+                            Vestibulum at varius nisi. In posuere posuere arcu et dictum. Sed id sapien posuere, euismod nibh eget, 
+                            eleifend est. Sed sagittis lacinia dolor, eget hendrerit orci lacinia quis. Aenean feugiat erat a porttitor 
+                            rhoncus. Cras cursus viverra libero vel convallis. Vestibulum iaculis risus et consectetur sollicitudin. Integer 
+                            facilisis quis turpis nec viverra. Fusce ut massa nibh. Cras at ipsum metus. Proin sed rutrum metus. Nunc odio erat, 
+                            iaculis sit amet tincidunt non, malesuada id lectus. Pellentesque nec mauris a ante bibendum tempor. Praesent mattis 
+                            aliquam eros, at commodo metus fringilla et. 
+                            Ut in lacus et magna tempus bibendum. In ut lacinia felis, feugiat molestie risus.
+                        </p>
+                    </div>
+                    <div data-aos="fade-down" data-aos-delay="140" data-aos-easing="ease-in" data-aos-duration="600">
+                        <p class="grey-color">
+                            Cras aliquet interdum accumsan. Sed libero diam, tincidunt nec odio id, interdum pharetra ligula. 
+                            Aenean et dolor erat. Praesent malesuada, nisi ac consectetur facilisis, orci tortor faucibus augue, quis 
+                            fermentum sem tortor sit amet ligula. Nullam aliquam auctor diam, vitae ullamcorper nibh mattis eget. In
+                             enim urna, placerat ac tristique ut, dignissim non ante. Curabitur eget convallis diam, nec dignissim diam.
+                        </p>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="100" data-aos-easing="ease-in" data-aos-duration="800">
+                        <div class="descrip-img mt-5 mb-5 text-center">
+                            <img src="img/khaled-ghareeb-7KKwt_BsE54-unsplash.jpg" alt="product image 2" class="img-fluid" id="descrip-img-2">
+                        </div>
+                    </div>
+                    <h5 class="py-3 fw-bold">Additional information</h5>
+                    <p class="grey-color mb-5">Vestibulum at varius nisi. In posuere posuere arcu et dictum. Sed id sapien posuere, euismod nibh eget, eleifend 
+                        est. Sed sagittis lacinia dolor, eget hendrerit orci lacinia quis.</p>
+                    <div class="quality-info">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <div class="d-flex ">
+                                    <i class="fa-regular fa-circle-check fa-2xl pt-3 pe-4 main-blue-color"></i>
+                                    <div>
+                                        <p class="fw-bold">We are certified</p>
+                                        <p>Proin sed rutrum metus. Nunc odio erat, iaculis sit amet tincidunt non, malesuada id lectus. 
+                                        Pellentesque nec mauris a ante bibendum tempor. Praesent mattis aliquam eros, feugiat molestie risus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <div class="d-flex">
+                                    <i class="fa-solid fa-square-check fa-2xl pt-3 pe-4 main-color-green"></i>
+                                    <div>
+                                        <p class="fw-bold">We are reliable</p>
+                                    <p>Proin sed rutrum metus. Nunc odio erat, iaculis sit amet tincidunt non, malesuada id lectus. 
+                                        Pellentesque nec mauris a ante bibendum tempor. Praesent mattis aliquam eros,  feugiat molestie risus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <div class="d-flex ">
+                                    <i class="fa-regular fa-circle-check fa-2xl pt-3 pe-4 main-color-green"></i>
+                                    <div>
+                                        <p class="fw-bold">Quality products</p>
+                                        <p>Proin sed rutrum metus. Nunc odio erat, iaculis sit amet tincidunt non, malesuada id lectus. 
+                                        Pellentesque nec mauris a ante bibendum tempor. Praesent mattis aliquam eros, feugiat molestie risus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <div class="d-flex">
+                                    <i class="fa-solid fa-square-check fa-2xl pt-3 pe-4 main-blue-color"></i>
+                                    <div>
+                                        <p class="fw-bold">Fast Delivery</p>
+                                    <p>Proin sed rutrum metus. Nunc odio erat, iaculis sit amet tincidunt non, malesuada id lectus. 
+                                        Pellentesque nec mauris a ante bibendum tempor. Praesent mattis aliquam eros,  feugiat molestie risus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="related-products" class="mb-5">
+            <hr>
+            <div class="container mt-5 mb-5">
+                <h4 class="py-3 fw-bold mb-4">Related products</h4>
+                <div class="row mt-3">
+                    <div class="swiper hotSwiper">
+                        <div class="swiper-wrapper" id="related-product-holder">
+
+                        </div>
+                        
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                      </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="milk-color-bg mt-5 pt-5 pb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                        <div class="contact-footer">
+                            <div class="logo mb-3">
+                                <a href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid logo-footer"></a>
+                            </div>
+                            <a href="mailto: contact@quaint-catalogue.com"
+                                class="d-block text-decoration-none text-dark mb-4"><i
+                                    class="fa-solid fa-envelope pe-3"></i>contact@quaint-cat.com</a>
+                            <a href="tel: +2349012345678" class="d-block ext-decoration-none text-dark pb-4"><i
+                                    class="fa-sharp fa-solid fa-phone pe-3"></i>+2349012345678</a>
+                            <ul class="social-links mb-3 d-flex justify-content-center mt-4 ps-0">
+                                <li class="nav-link"> <i class="fa-brands fa-facebook fa-xl pe-3"></i></li>
+                                <li class="nav-link"><i class="fa-brands fa-square-instagram fa-xl pe-3"></i></li>
+                                <li class="nav-link"><i class="fa-brands fa-square-twitter fa-xl pe-3"></i></li>
+                                <li class="nav-link"><i class="fa-brands fa-linkedin fa-xl"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                        <div class="delivery-links">
+                            <h5 class="pb-2">Delivery</h5>
+                            <ul class="ps-0">
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">How it
+                                        work</a></li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Free
+                                        delivery</a></li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">FAQ</a>
+                                </li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Payment
+                                        methods</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                        <div class="customer-service">
+                            <h5 class="pb-2">Customer service</h5>
+                            <ul class="ps-0">
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Orders</a>
+                                </li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Account
+                                        details</a></li>
+                                <li class="nav-link"><a href="#"
+                                        class="d-block text-decoration-none text-dark mb-2">Addresses</a></li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Lost
+                                        password</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                        <div class="helpful-links">
+                            <h5 class="pb-2">Useful links</h5>
+                            <ul class="ps-0">
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Contact
+                                        us</a></li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Help &
+                                        about us</a></li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Shipping &
+                                        returns</a></li>
+                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Refund
+                                        policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a href="#top"><i class="fa-sharp fa-solid fa-arrow-up fa-2xl text-dark"></i></a>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">Website by Omokaro Loveth 2022. Design from themes</p>
+        </footer>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+    <!-- AOS Aimation -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="js/reusable-js-code.js"></script>
+    <script src="js/product-details.js"></script>
+</body>
+</html>

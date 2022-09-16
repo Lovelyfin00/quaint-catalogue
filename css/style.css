@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Playfair+Display:wght@400;900&display=swap');
-
-/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Overlock:wght@400;900&display=swap');
-/* font-family: 'Nunito', sans-serif;
-font-family: 'Overlock', cursive; */ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 body{
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'Poppins', sans-serif ;
 }
 .fixed-top{
     z-index: 10 !important;
 }
 #preloader{
-    background: #000 url(../img/preloader-gif.gif) no-repeat center center;
-    background-size: 15%;
+    background: #000 url(../img/preloader.gif) no-repeat center center;
+    background-size: 20%;
     height: 100vh !important;
     width: 100% !important;
     position: fixed !important;
@@ -50,7 +46,7 @@ body{
     transition: 0.5s ease-in !important;
 }
 .fa-cart-shopping:hover{
-    color: white !important;
+    color: black !important;
 }
 .mobile-header.active:hover, .mobile-header .offcanvas .dropdown-item:hover{
     color:#1C3AA4 !important;
@@ -123,28 +119,32 @@ body{
     width: 60px;
     height: 50px;
 }
+.product-img{
+    overflow: hidden;
+}
+.product-img:hover img{
+    transform: scale(1.5);
+    opacity: 0.6;
+}
 .product-img img{
     height: 16rem;
     width: 100%;
-}
-
-.product-img:hover img{
-    transform: scale(1.1);
-    transition: 0.5s all ease-in-out;
-    opacity: 0.5;
+    transition: transform .5s ease;
 }
 
 .product-img:hover .product-links {
     display: block !important;
     display: flex !important;
     bottom: 40%;
-    left: 25%;
+    left: 22%;
 }
    
 .product-img .product-links {
     display: none !important;
 }
-
+.product-img .product-links .fa-cart-shopping:hover{
+    color: white !important;
+}
 .swiper-button-next, .swiper-button-prev{
     top: 30%;
     color: black;
@@ -221,13 +221,13 @@ body{
 }
 
 
-.who-are-we-img img{
+.who-we-are-img{
     width: 100%;
     min-height: 200px;
 }
 .who-we-are-text{
     width: 100%;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 /* DELIVERY SECTION */
@@ -286,20 +286,13 @@ body{
         margin-left: -5px;
         background-color: rgba(28, 58, 164, 0.7)
     }
-    .my-account:hover{
-        color: white !important;
-        background-color: rgba(227, 227, 227, 0.3);
-    }
+   
     /* Fixed navbar on scroll for tablet and desktop */
     .unhidden{
         display: block !important;
     }
     .fa-shopping-fixed:hover{
         color: black !important;
-    }
-    .my-account-fixed:hover{
-        background-color: black;
-        color: white !important;
     }
     .navbar-fixed-2 .navbar ul li:hover{
         color:white !important;
@@ -351,8 +344,8 @@ body{
     }
 
     /* WHO WE ARE SECTION */
-    .who-are-we-img img{
-        min-height: 595px;
+    .who-we-are-img{
+        min-height: 640px;
     }
 }
 @media screen and (min-width:768px){
@@ -422,8 +415,8 @@ body{
         display: none;
     }
     /* WHO WE ARE SECTION */
-    .who-are-we-img img{
-        min-height: 485px;
+    .who-we-are-img{
+        min-height: 600px;
     }
     /* DELIVERY SECTION */
     .shipping-card{

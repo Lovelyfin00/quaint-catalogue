@@ -1,0 +1,145 @@
+
+#hero-section-product{
+    background: url(../img/product-details-bg.jpg) repeat fixed 100%;
+    background-position: center;
+    background-size: cover;
+    min-height: 400px;
+    position: relative;
+}
+.shop-name{
+    position: absolute;
+    bottom: 50%;
+    left: 10%;
+}
+/* Product details section */
+#product-details{
+    padding: 80px 0;
+}
+.product-zoom{
+    min-height: 450px;
+    width: 100%;
+    background-position: 50% 50%;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+.product-zoom .product-zoom-img:hover{
+    opacity: 0;
+}
+.product-zoom .product-zoom-img{
+    transition: opacity 0.5s;
+    display: block;
+    width: 100%;
+    min-height: 450px;
+}
+.grey-color{
+    color: #5d6b82 !important;
+}
+.product-text{
+    min-height: 300px;
+}
+.product-text ul li{
+    color: #5d6b82;
+}
+/* removing arrows from input number */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#decrement{
+    top: 25%;
+    left: 15%;
+}
+#increment{
+    top: 25%;
+    right: 15%;
+}
+.product-cart{
+    text-align: center;
+}
+#success-message{
+    display: none;
+}
+.checkout-div button{
+    border-radius: 0 25px 0 25px;
+}
+.checkout-div button{
+    padding: 12px 18px;
+}
+.checkout-div button:hover{
+    background-color: black;
+    color: white !important;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; 
+  }
+  
+  @keyframes example {
+    15%   {
+        background-color:black;
+        transform: skewY(5deg);
+    }
+    30%{
+        transform: skewX(0deg);
+    }
+    40%{
+        transform: skewY(-5deg);
+        background-color: #7DFE9D;
+    }
+    55%  {
+        transform: skewY(0deg);
+    }
+    65%{
+        background-color: #1C3AA4;
+        transform: skewY(5deg);
+    }
+    75%{
+        transform: skewX(0deg);
+    }
+    85%  {
+        transform: translateX(30px);
+    }
+    100%  {
+        transform: translateX(-30px);
+    }
+  }
+
+/* Description section */
+#description{
+    width: 16%;
+    text-align: center;
+    cursor: pointer;
+}
+.border-bottom{
+    border-top: 2px solid black;
+    width: 155px;
+    margin-top: -18px;
+}
+
+.descrip-img img{
+    width: 80%;
+    height: 500px;
+}
+
+@media screen and (min-width:769px){
+    .checkout-div button{
+        padding: 18px 40px;
+    }
+}
+
+@media screen and (min-width:1025px){
+    .checkout-div button{
+        padding: 18px 30px;
+    }
+}
+
