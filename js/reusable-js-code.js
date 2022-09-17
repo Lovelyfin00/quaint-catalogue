@@ -68,6 +68,8 @@ window.onload = () => {
 };
 
 
+
+
 // Showing the search input on mobile view
 const searchNavBtnMobile = document.querySelector(".search-navbar-mobile");
 let searchNavBoxMobile = document.querySelector(".search-navbar-box-mobile");

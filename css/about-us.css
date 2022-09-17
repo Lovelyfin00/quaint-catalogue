@@ -1,0 +1,14 @@
+.first-img img{
+    min-height: 500px;
+    width: 100%;
+}
+.grey-color{
+    color: #5d6b82;
+}
+.second-img img{
+    height: 200px;
+    width: 40%;
+}
+.fast-shipping img, .free-shipping img, .return img{
+    height: 200px;
+}

@@ -9,24 +9,6 @@ let quantityOrdered = window.localStorage.getItem("quantityOrdered")
 quantityOrdered = JSON.parse(quantityOrdered)
 // console.log(quantityOrdered)
 
-// Checking if there is nothing in itemCartArray
-let emptyCart = document.querySelector("#empty-cart")
-if (idOfProducts===null){
-    emptyCart.style.display = 'block';
-} else{
-    emptyCart.style.display = 'none';
-}
-
-// getting the quantity number
-// function getQuantity (){
-//     for (let i=0; i<quantityOrdered.length; i++){
-//         let quantityNo = quantityOrdered[i][0]
-//         console.log(quantityNo)
-//     }
-//  }
-// getQuantity()
-
-// getting the data
 
 async function gettingApiData(data){
     const response =  await fetch ('https://dummyjson.com/products?skip=1&limit=100');
@@ -37,59 +19,144 @@ async function gettingApiData(data){
 }
 gettingApiData()
 
+
+// Saving the quantity
+
+let quantitySaved;
+
 // 
 let cartProductTable = document.querySelector("#cart-product-holder")
 
-function getIdAndData(data){
-    for (let i=0; i<idOfProducts.length; i++){
-        data.forEach(element => {
-            if (idOfProducts[i] === element.id){
-                // console.log(element)
-                let title = element.title
-                let price = element.price
-                let image = element.images
-                image = image[1]
-                let quantity = quantityOrdered[i][0]
+// Checking if there is nothing in itemCartArray
+let emptyCart = document.querySelector("#empty-cart")
+let cartSection = document.querySelector("#cart-section");
 
-                let tableString = ""
-                tableString += `
-                    <tr>
-                        <th scope="row">
-                            <div class="cart-img text-center">
-                                <img src="${image}" alt="product image" class="img-fluid">
-                            </div>
-                        </th>
-                        <td>
-                            <div class="cart-product-title text-center ">
-                                <p class="text-truncate">${title}</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="cart-price text-center">
-                                <p>$${price}</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="cart-quantity text-center">
-                                <input type="number" class="border-0" id="product-quantity" value="${quantity}">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="cart-subtotal text-center">
-                                <p>$${quantity*price}</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="remove-product text-center">
-                                <button class=".btn-close fa-sharp fa-solid fa-xmark border-0 bg-white fa-xl"></button>
-                            </div>
-                        </td>
-                    </tr>
-                `
-                cartProductTable.innerHTML += tableString;
-            }
-        });
+// Calculating cart totals
+let cartTotalHolder = document.querySelector("#total-of-cart");
+
+let subTotal =0
+
+if (idOfProducts===null){
+    emptyCart.style.display = 'block';
+    cartSection.style.display='none'
+} else{
+    emptyCart.style.display = 'none';
+    cartSection.style.display = 'block'
+
+    // Displaying the content of the cart
+    let newData = []
+    function getIdAndData(data){
+        for (let i=0; i<idOfProducts.length; i++){
+            for (let a =0; a<data.length; a++) {
+                if (idOfProducts[i] === data[a].id){
+                    
+                    newData.push(data[a])
+                    let id = data[a].id
+                    let title = data[a].title
+                    let price = data[a].price
+                    let image = data[a].images
+                    image = image[0]
+                    let quantity = quantityOrdered[i][0]
+    
+                    let tableString = ""
+                    tableString += `
+                        <tr>
+                            <th scope="row" class="pt-3 pb-3">
+                                <div class="cart-img text-center">
+                                    <img src="${image}" alt="product image" class="img-fluid">
+                                </div>
+                            </th>
+                            <td>
+                                <div class="cart-product-title text-center ">
+                                    <p class="text-truncate">${title}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart-price text-center">
+                                    <p>$${price}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart-quantity text-center">
+                                    <p>${quantity}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart-subtotal text-center">
+                                    <p>$${quantity*price}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="remove-product text-center">
+                                    <button onclick="removeItem(${id})" class=".btn-close fa-sharp fa-solid fa-xmark border-0 bg-white fa-xl"></button>
+                                </div>
+                            </td>
+                        </tr>
+                    `
+                    cartProductTable.innerHTML += tableString;
+
+
+                    // Adding all the price multiplied by the quantity
+                    
+                    subTotal += data[a].price * quantityOrdered[i][0]
+
+                }
+            };
+        }
+   
+        // console.log(subTotal)
+
+        // Dsiplaying the UI for the subtotal section
+        displaySubTotal (subTotal)
+        console.log(newData)
     }
 }
 
+// Dsiplaying the UI for the subtotal section
 
+function displaySubTotal (subTotal){
+    
+    let totalString = ""
+    totalString +=`
+        <h2 class="main-blue-color mb-4 mt-2">Cart totals</h2>
+
+        <table class="table align-middle table-bordered table-hover mb-5">
+            <tbody>
+            <tr>
+                <th scope="row" class="pt-3 pb-3 px-3">Subtotal</th>
+                <td>$${subTotal}.00</td>
+            </tr>
+            <tr>
+                <th scope="row" class="pt-3 pb-3 px-3">Delivery fee</th>
+                <td>$150.00</td>
+            </tr>
+            <tr>
+                <th scope="row" class="pt-3 pb-3 px-3">Total</th>
+                <td>$${subTotal + 150}.00</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="checkout-div text-center mb-5">
+            <button class="border-0 main-bg-green text-dark fw-bold" onclick="checkoutBtn()">Proceed to checkout</button>
+        </div>
+    `
+    cartTotalHolder.innerHTML += totalString
+}
+
+// checkout button
+
+function checkoutBtn(){
+    window.location.href='checkout.html'
+  }
+
+
+//   Remove item from cart
+function removeItem(id){
+    for (let i=0; i<idOfProducts.length; i++){
+        // console.log(idOfProducts[i])
+        if (idOfProducts[i] === id){
+            idOfProducts.splice(i, 1)
+            return idOfProducts
+        }
+    }
+}

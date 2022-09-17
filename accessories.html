@@ -13,8 +13,7 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product-details.css">
-    <link rel="stylesheet" href="css/cart.css">
-    <title>Cart quaint-catalogue</title>
+    <title>Accessories quaint-catalogue</title>
 </head>
 <body>
     <main>
@@ -183,135 +182,86 @@
                     </form>
                 </div>
             </div>
-            <h1 class="shop-name main-blue-color fw-bold">Shop</h1>
+            <h1 class="shop-name main-blue-color fw-bold">Accessories</h1>
         </section>
 
-        <section id="empty-cart">
-            <div class="container mt-5">
-                <div class="empty-cart bg-success py-3 px-5 d-flex align-items-center justify-content-center">
-                    <p class="mb-0 milk-color">There is nothing in cart</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="cart-section" class="mb-3">
+        <section id="fashion-section" style="margin-top:100px ; margin-bottom:40px;">
+            
             <div class="container mt-5 mb-5">
-                <div class="cart-table table-responsive">
-                    <table class="table align-middle">
-                        <thead>
-                          <tr>
-                            <th scope="col" class="text-center">Product</th>
-                            <th scope="col" class="text-center">Description</th>
-                            <th scope="col" class="text-center">Price</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-center">Subtotal</th>
-                            <th scope="col" class="text-center"></th>
-                          </tr>
-                        </thead>
-                        <tbody id="cart-product-holder">
-                            
-                        </tbody>
-                      </table>
-                </div>
-            </div>
-        </section>
-        <section id="cart-totals">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                <p class="main-blue-color fs-5 pt-4 pb-5">Showing all results</p>
+                <div class="row" id="accessories-items">
 
-                    </div>
-                    <div class="col-lg-6 col-md-6" id="total-of-cart">
-                        
-                    </div>
                 </div>
             </div>
         </section>
 
         <footer class="milk-color-bg mt-5 pt-5 pb-3">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
-                        <div class="contact-footer">
-                            <div class="logo mb-3">
-                                <a href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid logo-footer"></a>
-                            </div>
-                            <a href="mailto: contact@quaint-catalogue.com"
-                                class="d-block text-decoration-none text-dark mb-4"><i
-                                    class="fa-solid fa-envelope pe-3"></i>contact@quaint-cat.com</a>
-                            <a href="tel: +2349012345678" class="d-block ext-decoration-none text-dark pb-4"><i
-                                    class="fa-sharp fa-solid fa-phone pe-3"></i>+2349012345678</a>
-                            <ul class="social-links mb-3 d-flex justify-content-center mt-4 ps-0">
-                                <li class="nav-link"> <i class="fa-brands fa-facebook fa-xl pe-3"></i></li>
-                                <li class="nav-link"><i class="fa-brands fa-square-instagram fa-xl pe-3"></i></li>
-                                <li class="nav-link"><i class="fa-brands fa-square-twitter fa-xl pe-3"></i></li>
-                                <li class="nav-link"><i class="fa-brands fa-linkedin fa-xl"></i></li>
-                            </ul>
-                        </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                  <div class="contact-footer">
+                    <div class="logo mb-3">
+                      <a href="index.html"><img src="img/logo3.svg" alt="logo" class="img-fluid logo-footer"></a>
                     </div>
-                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
-                        <div class="delivery-links">
-                            <h5 class="pb-2">Delivery</h5>
-                            <ul class="ps-0">
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">How it
-                                        work</a></li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Free
-                                        delivery</a></li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">FAQ</a>
-                                </li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Payment
-                                        methods</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
-                        <div class="customer-service">
-                            <h5 class="pb-2">Customer service</h5>
-                            <ul class="ps-0">
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Orders</a>
-                                </li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Account
-                                        details</a></li>
-                                <li class="nav-link"><a href="#"
-                                        class="d-block text-decoration-none text-dark mb-2">Addresses</a></li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Lost
-                                        password</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
-                        <div class="helpful-links">
-                            <h5 class="pb-2">Useful links</h5>
-                            <ul class="ps-0">
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Contact
-                                        us</a></li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Help &
-                                        about us</a></li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Shipping &
-                                        returns</a></li>
-                                <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Refund
-                                        policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <a href = "mailto: contact@quaint-catalogue.com" class="d-block text-decoration-none text-dark mb-4"><i class="fa-solid fa-envelope pe-3"></i>contact@quaint-cat.com</a>
+                    <a href = "tel: +2349012345678" class="d-block ext-decoration-none text-dark pb-4"><i class="fa-sharp fa-solid fa-phone pe-3"></i>+2349012345678</a>
+                    <ul class="social-links mb-3 d-flex justify-content-center mt-4 ps-0">
+                      <li class="nav-link"> <i class="fa-brands fa-facebook fa-xl pe-3"></i></li>
+                      <li class="nav-link"><i class="fa-brands fa-square-instagram fa-xl pe-3"></i></li>
+                      <li class="nav-link"><i class="fa-brands fa-square-twitter fa-xl pe-3"></i></li>
+                      <li class="nav-link"><i class="fa-brands fa-linkedin fa-xl"></i></li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <a href="#top"><i class="fa-sharp fa-solid fa-arrow-up fa-2xl text-dark"></i></a>
+                <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                  <div class="delivery-links">
+                    <h5 class="pb-2">Delivery</h5>
+                    <ul class="ps-0">
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">How it work</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Free delivery</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">FAQ</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Payment methods</a></li>
+                    </ul>
+                  </div>
                 </div>
+                <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                  <div class="customer-service">
+                    <h5 class="pb-2">Customer service</h5>
+                    <ul class="ps-0">
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Orders</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Account details</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Addresses</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Lost password</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center text-lg-start mb-4">
+                  <div class="helpful-links">
+                    <h5 class="pb-2">Useful links</h5>
+                    <ul class="ps-0">
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Contact us</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Help & about us</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Shipping & returns</a></li>
+                      <li class="nav-link"><a href="#" class="d-block text-decoration-none text-dark mb-2">Refund policy</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a href="#top"><i class="fa-sharp fa-solid fa-arrow-up fa-2xl text-dark"></i></a>
+              </div>
             </div>
             <hr>
             <p class="text-center">Website by Omokaro Loveth 2022. Design from themes</p>
         </footer>
-
     </main>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-    <!-- AOS Aimation -->
     <script src="js/reusable-js-code.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/all-categories-reusable.js"></script>
+    <script src="js/accessories.js"></script>
 </body>
 </html>

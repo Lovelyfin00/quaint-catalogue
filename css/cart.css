@@ -1,9 +1,12 @@
 /* cart image */
 .cart-img img{
     max-height: 110px;
-    width: 100%;
+    width: 80%;
 }
 #empty-cart{
+    display: none;
+}
+#cart-section{
     display: none;
 }
 #product-quantity{

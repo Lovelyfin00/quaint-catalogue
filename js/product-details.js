@@ -118,6 +118,12 @@ function addToCart(id, prices){
   successMessage.style.display ="block"
 }
 
+// checkout button
+
+function checkoutBtn(){
+  window.location.href='checkout.html'
+}
+
 
 // Images in description
 
