@@ -12,3 +12,14 @@
 .fast-shipping img, .free-shipping img, .return img{
     height: 200px;
 }
+#counter-section{
+    background-color: #FFC4C4;
+}
+.about-us-img1 img{
+    max-height: 350px;
+    width: 100%;
+}
+.about-us-img2 img{
+    max-height: 500px;
+    width: 100%;
+}

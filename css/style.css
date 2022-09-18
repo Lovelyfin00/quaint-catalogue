@@ -7,7 +7,7 @@ body{
     z-index: 10 !important;
 }
 #preloader{
-    background: #000 url(../img/preloader.gif) no-repeat center center;
+    background: #000 url(../img/checkout-preloader.gif) no-repeat center center;
     background-size: 20%;
     height: 100vh !important;
     width: 100% !important;
@@ -217,7 +217,7 @@ body{
 #who-we-are{
     padding: 80px 0;
     background: url(../img/who-we-are-bg.jpg) repeat fixed 100%;
-    min-height: 100vh;
+    min-height: 900px;
 }
 
 
