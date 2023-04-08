@@ -1,4 +1,4 @@
-# Welcome to my quaint catalogue! 🛍️
+# Welcome to quaint catalogue! 🛍️
 Hey there, fellow shopaholics! This is my amazing ecommerce website built using JavaScript, HTML, and CSS. I wanted to put my skills to the test and create an online store that is both functional and visually stunning. I used Bootstrap as my CSS framework and added some extra pizzazz with Swiper JS for some categories. Plus, I fetched product data from dummyjson.com to populate my website with tons of awesome products!
 
 ## Features
