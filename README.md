@@ -1,5 +1,5 @@
 # Welcome to quaint catalogue! 🛍️
-Hey there, fellow shopaholics! This is my amazing ecommerce website built using JavaScript, HTML, and CSS. I wanted to put my skills to the test and create an online store that is both functional and visually stunning. I used Bootstrap as my CSS framework and added some extra pizzazz with Swiper JS for some categories. Plus, I fetched product data from dummyjson.com to populate my website with tons of awesome products!
+Hey there, fellow shopaholics! This is my amazing ecommerce website built using JavaScript, HTML, and CSS. I wanted to put my skills to the test and create an online store that is both functional and visually stunning. I used Bootstrap as my CSS framework and added some extra pizzazz with Swiper JS for some categories. Plus, I fetched product data from dummyjson.com to populate my website with tons of awesome products! <b>You can view the live website [here](https://lovelyfin00.github.io/quaint-catalogue/)</b>
 
 ## Features
 My website has everything you need for a seamless online shopping experience! Here are some of the cool features:
@@ -21,15 +21,6 @@ I used a bunch of awesome technologies to build this website, including:
 5. Swiper JS
 6. dummyjson.com
 7. AOS 
-
-
-## Getting Started
-Are you ready to start shopping? Here's what you need to do:
-
-1. Clone this repository to your local machine
-2. Install the necessary dependencies by running npm install
-3. Start the application by running npm start
-4. Visit the application at http://localhost:3000/
 
 ## Screenshots
 Check out some of the awesome screenshots of my website!
