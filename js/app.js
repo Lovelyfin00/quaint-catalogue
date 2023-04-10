@@ -1,26 +1,22 @@
 
 let hotSellingSection = document.querySelector("#hot-deals-row")
 let hotDealsArray = [];
-let hotProducts = {}
+let hotProducts = {};
 
 // Calling the api stored in  our store.json in database
 const api_url = 'https://dummyjson.com/products?skip=1&limit=100';
 
-
 // creating an async function and fetching the api in the hot products category
-
 async function getHotProductsData(){
   const response =  await fetch (api_url);
   let data = await response.json();
-  hotDealsArray = data.products
-  hotDealsArray = hotDealsArray.slice(43 ,56)
+  hotDealsArray = data.products;
+  hotDealsArray = hotDealsArray.slice(43 ,56);
+
     for (const product of hotDealsArray){
-      // console.log(product.category)
       const catagoryName = product.category;
       if (catagoryName === "mens-shoes" || catagoryName === "womens-dresses" || catagoryName === "mens-shirts" ){
-        // console.log(hotProducts = product.id )
-        hotProducts = product 
-        // console.log(hotProducts)
+        hotProducts = product;
         hotDeals(hotProducts)
       }
     } 
@@ -28,18 +24,13 @@ async function getHotProductsData(){
 getHotProductsData()
 
 // Creating a function to display the products filtered in the hot products section
-
 function hotDeals (products) {
-  // console.log(products)
-  let id = products.id
-  let [...images] = products.images
-  let price = products.price
-  let title = products.title
-  // console.log(id)
-  // console.log(images)
-  // console.log(price)
-  // console.log(title)
-  let hotDealsStrings=""
+  let id = products.id;
+  let [...images] = products.images;
+  let price = products.price;
+  let title = products.title;
+  let hotDealsStrings="";
+
   hotDealsStrings += `
     <div class="swiper-slide">
       <div class="card border-0 milk-color-bg">
@@ -66,7 +57,7 @@ function quantityOfProduct(id, quantity){
   let quantityOrdered = window.localStorage.getItem('quantityOrdered');
   quantityOrdered = quantityOrdered ? JSON.parse(quantityOrdered) : [];
   
-  quantityOrdered.unshift([quantity, id])
+  quantityOrdered.unshift([quantity, id]);
   
   window.localStorage.setItem('quantityOrdered', JSON.stringify(quantityOrdered));
 }
@@ -74,60 +65,56 @@ function quantityOfProduct(id, quantity){
 // add to cart
 
 function addToCart(id, prices){
-  count +=1
+  count +=1;
+
   // Displaying the count on click of addToCart
-  cartOnFixed.innerHTML = count
-  cartOnScroll.innerHTML = count
+  cartOnFixed.innerHTML = count;
+  cartOnScroll.innerHTML = count;
+
   // Saving the value of the count to localstorage
   localStorage.setItem("count", JSON.stringify(count));
 
   // getting value of id
-  storeCartId (cartIdArray, id)
+  storeCartId (cartIdArray, id);
 
   // getting value of prices
-  storeprices (priceArray, prices)
+  storeprices (priceArray, prices);
 
-    // saving quantity of goods ordered
+  // saving quantity of goods ordered
   let quantityOfGoods = 1;
-  quantityOfProduct(id, quantityOfGoods)
+  quantityOfProduct(id, quantityOfGoods);
 
 }
 
-// // FEATURED PRODUCTS SECTION
-
-
+// FEATURED PRODUCTS SECTION
 const clothesTabShow = document.querySelector("#clothes-tab-show");
 const shoesTabShow = document.querySelector("#shoes-tab-show");
 const furnitureTabShow = document.querySelector("#home-decoration-tab-show");
+
 let featuredClothesArray = [];
 
 async function featuredClothesData (){
   const response =  await fetch (api_url);
   data = await response.json();
   data = data.products;
-  featuredClothesArray = data
-  // console.log(featuredClothesArray)
-  featuredClothesArray = featuredClothesArray.slice(36,44)
+
+  featuredClothesArray = data;
+  featuredClothesArray = featuredClothesArray.slice(36,44);
+
   for (let i=0; i<featuredClothesArray.length; i++){
-    // console.log(featuredClothesArray[i].category)
     if (featuredClothesArray[i].category === 'womens-dresses' || featuredClothesArray[i].category === 'tops'){
-      let clothes =featuredClothesArray[i]
-      featuredClothes (clothes)
+      let clothes =featuredClothesArray[i];
+      featuredClothes (clothes);
     }
   }
 }
-featuredClothesData()
+featuredClothesData();
 
 function featuredClothes (clothesData){
-  let {id, images, price, title} = clothesData
-  // let id = clothesData.id
-  // let images = clothesData.images
-  // let price = clothesData.price
-  // let title = clothesData.title
-  images = images[1]
-  // console.log(images)
+  let {id, images, price, title} = clothesData;
+  images = images[1];
 
-  let clothesTabStrings=""
+  let clothesTabStrings="";
   clothesTabStrings += `
     <div class="col-lg-3 col-md-6">
       <div class="card border-0">
@@ -148,36 +135,28 @@ function featuredClothes (clothesData){
   clothesTabShow.innerHTML += clothesTabStrings;
 }
 
-
 // SHOES TAB SHOW
-
 async function featuredShoesData (){
   const response =  await fetch (api_url);
   let featuredShoesArray = await response.json();
-  featuredShoesArray = featuredShoesArray.products
-  // console.log(featuredShoesArray)
-  featuredShoesArray = featuredShoesArray.slice(46, 59)
+
+  featuredShoesArray = featuredShoesArray.products;
+  featuredShoesArray = featuredShoesArray.slice(46, 59);
+
   for (let i=0; i<featuredShoesArray.length; i++){
-    // console.log(featuredShoesArray[i].category)
     if (featuredShoesArray[i].category === 'mens-shoes' || featuredShoesArray[i].category === 'womens-shoes'){
-      let shoes =featuredShoesArray[i]
-      featuredShoes(shoes)
-      // console.log(shoes.id)
+      let shoes =featuredShoesArray[i];
+      featuredShoes(shoes);
     }
   }
 }
-featuredShoesData()
+featuredShoesData();
 
 function featuredShoes (shoesData){
-  let {id, images, price, title} = shoesData
-  // let id = shoesData.id
-  // let images = shoesData.images
-  // let price = shoesData.price
-  // let title = shoesData.title
-  images = images[0]
-  // console.log(images)
+  let {id, images, price, title} = shoesData;
+  images = images[0];
+  let shoesTabStrings="";
 
-  let shoesTabStrings=""
   shoesTabStrings += `
     <div class="col-lg-3 col-md-6">
       <div class="card border-0">
@@ -198,31 +177,29 @@ function featuredShoes (shoesData){
   shoesTabShow.innerHTML += shoesTabStrings;
 }
 
-
 // FURNITURE TAB SHOW
-
 async function featuredFurnitureData(){
   const response =  await fetch (api_url);
-  let featuredFurnitureArray  = []
+  let featuredFurnitureArray  = [];
+
   featuredFurnitureArray = await response.json();
-  featuredFurnitureArray = featuredFurnitureArray.products
-  featuredFurnitureArray = featuredFurnitureArray.slice(26,34)
+  featuredFurnitureArray = featuredFurnitureArray.products;
+  featuredFurnitureArray = featuredFurnitureArray.slice(26,34);
+
   for (let i=0; i<featuredFurnitureArray.length; i++){
-    // console.log(featuredFurnitureArray[i].category)
     if (featuredFurnitureArray[i].category === 'furniture' || featuredFurnitureArray[i].category === 'home-decoration'){
-      let furniture =featuredFurnitureArray[i]
-      // console.log(furniture.id)
-      featuredFurniture (furniture)
+      const furniture =featuredFurnitureArray[i];
+      featuredFurniture (furniture);
     }
   }
 }
 featuredFurnitureData()
 
 function featuredFurniture (furnitureData){
-  let {id, images, price, title} = furnitureData
-  images = images[2]
-  // console.log(images)
-  let furnitureTabStrings=""
+  let {id, images, price, title} = furnitureData;
+  images = images[2];
+  let furnitureTabStrings="";
+
   furnitureTabStrings += `
     <div class="col-lg-3 col-md-6">
       <div class="card border-0">
@@ -243,18 +220,13 @@ function featuredFurniture (furnitureData){
   furnitureTabShow.innerHTML += furnitureTabStrings;
 }
 
-
 // PRELOADER
 let preLoader = document.querySelector("#preloader");
 window.addEventListener("load", () => {
   preLoader.style.display = "none";
 })
 
-
-
-
-// // Swiper js for hero section bg images
-
+// Swiper js for hero section bg images
 var swiper = new Swiper(".mySwiper", {
     autoplay: {
       delay: 3500,
@@ -303,7 +275,6 @@ var swiper = new Swiper(".mySwiper", {
 
 
 // Marquee effect
-
 (function () {
     const script = document.createElement("script");
     const s0 = document.getElementsByTagName("script")[0];

@@ -1,41 +1,38 @@
-
-let skincareItemSection = document.querySelector("#skincare-items")
+let skincareItemSection = document.querySelector("#skincare-items");
 let skincareItemsArray = [];
-let skincareProducts = {}
+let skincareProducts = {};
 
 // Calling the api stored in  our store.json in database
-const api_url = 'https://dummyjson.com/products?skip=1&limit=100';
-
+const api_url = "https://dummyjson.com/products?skip=1&limit=100";
 
 // creating an async function and fetching the api in the skincare products category
-
-async function getSkincareProductsData(){
-    const response =  await fetch (api_url);
-    let data = await response.json();
-    data = data.products
-    skincareItemsArray = data
-    // console.log(data)
-    for (const product of skincareItemsArray){
-      // console.log(product.category)
-      const catagoryName = product.category;
-    //   console.log(catagoryName)
-      if (catagoryName === "fragrances" || catagoryName === "skincare" || catagoryName === "womens-shoes" || catagoryName === "mens-shoes"){
-        // console.log(skincareProducts = product.id )
-        skincareProducts = product 
-        // console.log(skincareProducts)
-        skincareItems(skincareProducts)
-      }
-    } 
+async function getSkincareProductsData() {
+  const response = await fetch(api_url);
+  let data = await response.json();
+  data = data.products;
+  skincareItemsArray = data;
+  
+  for (const product of skincareItemsArray) {
+    const catagoryName = product.category;
+    
+    if (
+      catagoryName === "fragrances" ||
+      catagoryName === "skincare" ||
+      catagoryName === "womens-shoes" ||
+      catagoryName === "mens-shoes"
+    ) {
+      skincareProducts = product;
+      skincareItems(skincareProducts);
+    }
+  }
 }
-getSkincareProductsData()
+getSkincareProductsData();
 
 // Creating a function to display the products filtered in the skincare products section
-
-function skincareItems (products) {
-  // console.log(products)
-  let {id, images, price, title} = products
-  images = images[0]
-  let skincareItemsStrings=""
+function skincareItems(products) {
+  let { id, images, price, title } = products;
+  images = images[0];
+  let skincareItemsStrings = "";
   skincareItemsStrings += `
     <div class="col-lg-3 col-md-6 mb-3">
         <div class="card border-0">
@@ -52,6 +49,7 @@ function skincareItems (products) {
             </div>
         </div>
     </div>
-  `
-skincareItemSection.innerHTML += skincareItemsStrings
+  `;
+
+  skincareItemSection.innerHTML += skincareItemsStrings;
 }

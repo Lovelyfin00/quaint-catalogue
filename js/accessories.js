@@ -1,41 +1,41 @@
-
-let accessoriesItemSection = document.querySelector("#accessories-items")
+let accessoriesItemSection = document.querySelector("#accessories-items");
 let accessoriesItemsArray = [];
-let accessoriesProducts = {}
+let accessoriesProducts = {};
 
 // Calling the api stored in  our store.json in database
-const api_url = 'https://dummyjson.com/products?skip=1&limit=100';
-
+const api_url = "https://dummyjson.com/products?skip=1&limit=100";
 
 // creating an async function and fetching the api in the accessories products category
 
-async function getAccessoriesProductsData(){
-    const response =  await fetch (api_url);
-    let data = await response.json();
-    data = data.products
-    accessoriesItemsArray = data
-    // console.log(data)
-    for (const product of accessoriesItemsArray){
-      // console.log(product.category)
-      const catagoryName = product.category;
-    //   console.log(catagoryName)
-      if (catagoryName === "mens-watches" || catagoryName === "womens-watches" || catagoryName === "womens-jewellery" || catagoryName === "sunglasses"){
-        // console.log(accessoriesProducts = product.id )
-        accessoriesProducts = product 
-        // console.log(accessoriesProducts)
-        accessoriesItems(accessoriesProducts)
-      }
-    } 
+async function getAccessoriesProductsData() {
+  const response = await fetch(api_url);
+  let data = await response.json();
+  data = data.products;
+  accessoriesItemsArray = data;
+  
+  for (const product of accessoriesItemsArray) {
+    const catagoryName = product.category;
+    if (
+      catagoryName === "mens-watches" ||
+      catagoryName === "womens-watches" ||
+      catagoryName === "womens-jewellery" ||
+      catagoryName === "sunglasses"
+    ) {
+
+      accessoriesProducts = product;
+
+      accessoriesItems(accessoriesProducts);
+    }
+  }
 }
-getAccessoriesProductsData()
+getAccessoriesProductsData();
 
 // Creating a function to display the products filtered in the accessories products section
 
-function accessoriesItems (products) {
-  // console.log(products)
-  let {id, images, price, title} = products
-  images = images[0]
-  let accessoriesItemsStrings=""
+function accessoriesItems(products) {
+  let { id, images, price, title } = products;
+  images = images[0];
+  let accessoriesItemsStrings = "";
   accessoriesItemsStrings += `
     <div class="col-lg-3 col-md-6 mb-3">
         <div class="card border-0">
@@ -52,6 +52,6 @@ function accessoriesItems (products) {
             </div>
         </div>
     </div>
-  `
-accessoriesItemSection.innerHTML += accessoriesItemsStrings
+  `;
+  accessoriesItemSection.innerHTML += accessoriesItemsStrings;
 }

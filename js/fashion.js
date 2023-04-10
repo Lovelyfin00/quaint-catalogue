@@ -1,40 +1,39 @@
-
-let fashionItemSection = document.querySelector("#fashion-items")
+let fashionItemSection = document.querySelector("#fashion-items");
 let fashionItemsArray = [];
-let fashionProducts = {}
+let fashionProducts = {};
 
 // Calling the api stored in  our store.json in database
-const api_url = 'https://dummyjson.com/products?skip=1&limit=100';
-
+const api_url = "https://dummyjson.com/products?skip=1&limit=100";
 
 // creating an async function and fetching the api in the fashion products category
 
-async function getfashionProductsData(){
-    const response =  await fetch (api_url);
-    let data = await response.json();
-    data = data.products
-    fashionItemsArray = data
-    // console.log(data)
-    for (const product of fashionItemsArray){
-      // console.log(product.category)
-      const catagoryName = product.category;
-      if (catagoryName === "womens-dresses" || catagoryName === "womens-bags" || catagoryName === "mens-shirts" || catagoryName === "tops"){
-        // console.log(fashionProducts = product.id )
-        fashionProducts = product 
-        // console.log(fashionProducts)
-        fashionItems(fashionProducts)
-      }
-    } 
+async function getfashionProductsData() {
+  const response = await fetch(api_url);
+  let data = await response.json();
+  data = data.products;
+  fashionItemsArray = data;
+  
+  for (const product of fashionItemsArray) {
+    const catagoryName = product.category;
+    if (
+      catagoryName === "womens-dresses" ||
+      catagoryName === "womens-bags" ||
+      catagoryName === "mens-shirts" ||
+      catagoryName === "tops"
+    ) {
+      fashionProducts = product;
+      fashionItems(fashionProducts);
+    }
+  }
 }
-getfashionProductsData()
+getfashionProductsData();
 
 // Creating a function to display the products filtered in the fashion products section
 
-function fashionItems (products) {
-  // console.log(products)
-  let {id, images, price, title} = products
-  images = images[1]
-  let fashionItemsStrings=""
+function fashionItems(products) {
+  let { id, images, price, title } = products;
+  images = images[1];
+  let fashionItemsStrings = "";
   fashionItemsStrings += `
     <div class="col-lg-3 col-md-6 mb-3">
         <div class="card border-0">
@@ -51,6 +50,6 @@ function fashionItems (products) {
             </div>
         </div>
     </div>
-  `
-fashionItemSection.innerHTML += fashionItemsStrings
+  `;
+  fashionItemSection.innerHTML += fashionItemsStrings;
 }
